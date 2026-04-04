@@ -48,7 +48,7 @@ const ToursSection = () => {
                   <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{t(tour.group, lang)}</span>
                   <span className="flex items-center gap-1 text-volcanic"><Star className="w-3.5 h-3.5 fill-volcanic" />{ratings[i]}</span>
                 </div>
-                <button className="mt-5 w-full py-3 rounded-lg bg-secondary text-secondary-foreground font-body font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
+                <button onClick={() => setBookingIdx(i)} className="mt-5 w-full py-3 rounded-lg bg-secondary text-secondary-foreground font-body font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
                   {t(tr.tours.book, lang)}
                 </button>
               </div>
