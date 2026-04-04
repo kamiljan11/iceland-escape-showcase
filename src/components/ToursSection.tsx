@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Clock, Users, Star } from "lucide-react";
 import goldenCircle from "@/assets/tour-golden-circle.jpg";
@@ -5,6 +6,7 @@ import iceCave from "@/assets/tour-ice-cave.jpg";
 import northernLights from "@/assets/tour-northern-lights.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as tr, t } from "@/i18n/translations";
+import BookingModal from "@/components/BookingModal";
 
 const images = [goldenCircle, iceCave, northernLights];
 const ratings = ["4.9", "5.0", "4.8"];
@@ -12,6 +14,7 @@ const prices = ["12 900 ISK", "19 900 ISK", "9 900 ISK"];
 
 const ToursSection = () => {
   const { lang } = useLanguage();
+  const [bookingIdx, setBookingIdx] = useState<number | null>(null);
 
   return (
     <section id="tours" className="py-24 bg-gradient-dark">
@@ -45,13 +48,23 @@ const ToursSection = () => {
                   <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{t(tour.group, lang)}</span>
                   <span className="flex items-center gap-1 text-volcanic"><Star className="w-3.5 h-3.5 fill-volcanic" />{ratings[i]}</span>
                 </div>
-                <button className="mt-5 w-full py-3 rounded-lg bg-secondary text-secondary-foreground font-body font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
+                <button onClick={() => setBookingIdx(i)} className="mt-5 w-full py-3 rounded-lg bg-secondary text-secondary-foreground font-body font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
                   {t(tr.tours.book, lang)}
                 </button>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {bookingIdx !== null && (
+          <BookingModal
+            open
+            onClose={() => setBookingIdx(null)}
+            type="tour"
+            itemIndex={bookingIdx}
+            itemName={t(tr.tours.items[bookingIdx].title, lang)}
+          />
+        )}
       </div>
     </section>
   );
