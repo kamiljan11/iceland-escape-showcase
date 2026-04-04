@@ -73,7 +73,7 @@ const FleetSection = () => {
                     ))}
                   </ul>
 
-                  <button className={`w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${isFeatured ? "bg-gradient-aurora text-primary-foreground hover:opacity-90" : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"}`}>
+                  <button onClick={() => setBookingIdx(i)} className={`w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${isFeatured ? "bg-gradient-aurora text-primary-foreground hover:opacity-90" : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"}`}>
                     {t(tr.fleet.rent, lang)}
                   </button>
                 </div>
