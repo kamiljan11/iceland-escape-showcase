@@ -81,6 +81,16 @@ const FleetSection = () => {
             );
           })}
         </div>
+
+        {bookingIdx !== null && (
+          <BookingModal
+            open
+            onClose={() => setBookingIdx(null)}
+            type="car"
+            itemIndex={bookingIdx}
+            itemName={t(tr.fleet.cars[bookingIdx].name, lang)}
+          />
+        )}
       </div>
     </section>
   );

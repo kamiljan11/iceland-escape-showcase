@@ -55,6 +55,16 @@ const ToursSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {bookingIdx !== null && (
+          <BookingModal
+            open
+            onClose={() => setBookingIdx(null)}
+            type="tour"
+            itemIndex={bookingIdx}
+            itemName={t(tr.tours.items[bookingIdx].title, lang)}
+          />
+        )}
       </div>
     </section>
   );
