@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Fuel, Cog, Snowflake, Check } from "lucide-react";
 import carSuv from "@/assets/car-suv.jpg";
@@ -5,6 +6,7 @@ import carCompact from "@/assets/car-compact.jpg";
 import carCamper from "@/assets/car-camper.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as tr, t } from "@/i18n/translations";
+import BookingModal from "@/components/BookingModal";
 
 const images = [carCompact, carSuv, carCamper];
 const prices = ["6 900 ISK", "14 900 ISK", "19 900 ISK"];
@@ -12,6 +14,7 @@ const featuredIdx = 1;
 
 const FleetSection = () => {
   const { lang } = useLanguage();
+  const [bookingIdx, setBookingIdx] = useState<number | null>(null);
 
   return (
     <section id="fleet" className="py-24">
