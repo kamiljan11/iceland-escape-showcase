@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Plane, Building2, MapPin } from "lucide-react";
+import { Plane, Building2, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 
@@ -54,16 +55,31 @@ const heading = {
 
 const PickupLocations = () => {
   const { lang } = useLanguage();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const w = scrollRef.current.offsetWidth * 0.85;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -w : w, behavior: "smooth" });
+  };
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-body">{t(heading.label, lang)}</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
+    <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-14">
+          <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="flex md:hidden justify-end gap-2 mb-4 px-1">
+          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
+          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+        >
           {locations.map((loc, i) => {
             const Icon = loc.icon;
             return (
@@ -73,18 +89,18 @@ const PickupLocations = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
-                className="bg-card border border-border/50 rounded-xl p-6 hover:border-primary/30 transition-colors"
+                className="flex-shrink-0 w-[80vw] md:w-auto snap-start bg-card border border-border/50 rounded-xl p-5 md:p-6 hover:border-primary/30 transition-colors"
               >
-                <div className="w-12 h-12 rounded-lg bg-gradient-aurora flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-primary-foreground" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-aurora flex items-center justify-center mb-3 md:mb-4">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
                 </div>
-                <h3 className="font-heading text-lg font-bold mb-2">{t(loc.name, lang)}</h3>
-                <p className="text-muted-foreground text-sm font-body leading-relaxed mb-4">{t(loc.desc, lang)}</p>
-                <div className="flex items-center gap-2 text-xs font-body">
+                <h3 className="font-heading text-base md:text-lg font-bold mb-1.5 md:mb-2">{t(loc.name, lang)}</h3>
+                <p className="text-muted-foreground text-xs md:text-sm font-body leading-relaxed mb-3 md:mb-4">{t(loc.desc, lang)}</p>
+                <div className="flex items-center gap-2 text-[11px] md:text-xs font-body">
                   <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--aurora-green))]" />
                   <span className="text-primary font-semibold">{t(loc.stat, lang)}</span>
                 </div>
-                <p className="text-muted-foreground/60 text-[11px] font-body mt-2">{loc.address}</p>
+                <p className="text-muted-foreground/60 text-[10px] md:text-[11px] font-body mt-2">{loc.address}</p>
               </motion.div>
             );
           })}
