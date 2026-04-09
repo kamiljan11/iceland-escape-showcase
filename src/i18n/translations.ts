@@ -3,7 +3,6 @@ export type Lang = "en" | "pl" | "is";
 export const translations = {
   nav: {
     tours: { en: "Tours", pl: "Wycieczki", is: "Ferðir" },
-    fleet: { en: "Fleet", pl: "Flota", is: "Bílafloti" },
     about: { en: "About", pl: "O nas", is: "Um okkur" },
     contact: { en: "Contact", pl: "Kontakt", is: "Hafðu samband" },
     book: { en: "Book now", pl: "Zarezerwuj", is: "Bókaðu" },
@@ -15,12 +14,12 @@ export const translations = {
       is: "Uppgötvaðu Ísland með okkur",
     },
     desc: {
-      en: "Iceland tours & car rental. Your adventure starts here.",
-      pl: "Wycieczki po Islandii & wypożyczalnia samochodów. Twoja przygoda zaczyna się tutaj.",
-      is: "Ferðir um Ísland og bílaleiga. Ævintýrið þitt byrjar hér.",
+      en: "Guided tours across Iceland's most breathtaking landscapes. Your adventure starts here.",
+      pl: "Wycieczki z przewodnikiem po najpiękniejszych krajobrazach Islandii. Twoja przygoda zaczyna się tutaj.",
+      is: "Ferðir með leiðsögumanni um stórbrottustu landslag Íslands. Ævintýrið þitt byrjar hér.",
     },
     cta_tours: { en: "View tours", pl: "Zobacz wycieczki", is: "Skoða ferðir" },
-    cta_fleet: { en: "Rent a car", pl: "Wypożycz auto", is: "Leigðu bíl" },
+    cta_routes: { en: "Explore routes", pl: "Odkryj trasy", is: "Skoða leiðir" },
   },
   tours: {
     label: { en: "Popular tours", pl: "Popularne wycieczki", is: "Vinsælar ferðir" },
@@ -59,57 +58,6 @@ export const translations = {
       },
     ],
   },
-  fleet: {
-    label: { en: "Car rental", pl: "Wypożyczalnia", is: "Bílaleiga" },
-    heading: { en: "Choose your vehicle", pl: "Wybierz swój pojazd", is: "Veldu ökutækið þitt" },
-    perDay: { en: "/ day", pl: "/ dzień", is: "/ dag" },
-    popular: { en: "Most popular", pl: "Najpopularniejszy", is: "Vinsælast" },
-    rent: { en: "Rent", pl: "Wypożycz", is: "Leigja" },
-    cars: [
-      {
-        name: { en: "Compact", pl: "Kompakt", is: "Smábíll" },
-        model: "VW Golf / similar",
-        features: {
-          en: ["Automatic", "Petrol", "Heating"],
-          pl: ["Automat", "Benzyna", "Ogrzewanie"],
-          is: ["Sjálfskiptur", "Bensín", "Hitun"],
-        },
-        perks: {
-          en: ["CDW Insurance", "GPS Navigation", "Unlimited km"],
-          pl: ["Ubezpieczenie CDW", "Nawigacja GPS", "Darmowe km"],
-          is: ["CDW trygging", "GPS leiðsögn", "Ótakmarkaðir km"],
-        },
-      },
-      {
-        name: { en: "SUV 4×4", pl: "SUV 4×4", is: "SUV 4×4" },
-        model: "Land Cruiser / similar",
-        features: {
-          en: ["Automatic", "Diesel", "4WD"],
-          pl: ["Automat", "Diesel", "Napęd 4×4"],
-          is: ["Sjálfskiptur", "Dísil", "4×4 drif"],
-        },
-        perks: {
-          en: ["Full insurance", "F-roads", "Roof rack"],
-          pl: ["Pełne ubezp.", "Drogi F", "Rack dachowy"],
-          is: ["Full trygging", "F-vegir", "Þakgrind"],
-        },
-      },
-      {
-        name: { en: "Camper", pl: "Kamper", is: "Húsbíll" },
-        model: "Ford Transit / similar",
-        features: {
-          en: ["Automatic", "Diesel", "Kitchen"],
-          pl: ["Automat", "Diesel", "Kuchnia"],
-          is: ["Sjálfskiptur", "Dísil", "Eldhús"],
-        },
-        perks: {
-          en: ["Camping gear", "Bed for 2", "Shower"],
-          pl: ["Sprzęt kempingowy", "Łóżko 2 os.", "Prysznic"],
-          is: ["Tjaldabúnaður", "Rúm fyrir 2", "Sturta"],
-        },
-      },
-    ],
-  },
   about: {
     label: { en: "About us", pl: "O nas", is: "Um okkur" },
     heading: { en: "Your local partner in Iceland", pl: "Twój lokalny partner na Islandii", is: "Staðbundinn samstarfsaðili þinn á Íslandi" },
@@ -119,9 +67,9 @@ export const translations = {
       is: "Norðan Travel er fjölskyldufyrirtæki frá Reykjavík. Í yfir 12 ár höfum við hjálpað ferðalöngum frá öllum heimshornum að uppgötva fallegustu staði Íslands — frá jöklum til heitra lauganna.",
     },
     p2: {
-      en: "Our fleet features reliable vehicles ready for any weather and road. We also offer personalised tours with experienced local guides who know the island like the back of their hand.",
-      pl: "Nasza flota to niezawodne pojazdy gotowe na każdą pogodę i drogę. Oferujemy też spersonalizowane wycieczki z doświadczonymi, lokalnymi przewodnikami, którzy znają wyspę jak własną kieszeń.",
-      is: "Bílaflotinn okkar samanstendur af áreiðanlegum ökutækjum tilbúnum fyrir hvaða veður og veg sem er. Við bjóðum einnig sérsniðnar ferðir með reyndum leiðsögumönnum sem þekkja eyjuna eins og eigin vasann.",
+      en: "Our experienced local guides know the island like the back of their hand. We offer personalised tours to iconic landmarks and hidden gems that only locals know about.",
+      pl: "Nasi doświadczeni, lokalni przewodnicy znają wyspę jak własną kieszeń. Oferujemy spersonalizowane wycieczki do kultowych miejsc i ukrytych perełek znanych tylko miejscowym.",
+      is: "Reyndir leiðsögumenn okkar þekkja eyjuna eins og eigin vasann. Við bjóðum sérsniðnar ferðir að þekktum kennileitum og faldum perlum sem aðeins heimamenn þekkja.",
     },
     stats: {
       tours: { en: "Tours per year", pl: "Wycieczek rocznie", is: "Ferðir á ári" },
@@ -140,8 +88,8 @@ export const translations = {
     lastName: { en: "Last name", pl: "Nazwisko", is: "Eftirnafn" },
     selectOptions: {
       tour: { en: "Tour — enquiry", pl: "Wycieczka — zapytanie", is: "Ferð — fyrirspurn" },
-      car: { en: "Car rental", pl: "Wypożyczenie samochodu", is: "Bílaleiga" },
-      both: { en: "Tour + car", pl: "Wycieczka + samochód", is: "Ferð + bíll" },
+      private: { en: "Private tour", pl: "Wycieczka prywatna", is: "Einkaferð" },
+      group: { en: "Group booking", pl: "Rezerwacja grupowa", is: "Hópbókun" },
       other: { en: "Other question", pl: "Inne pytanie", is: "Önnur spurning" },
     },
     message: { en: "Your message...", pl: "Twoja wiadomość...", is: "Skilaboðin þín..." },

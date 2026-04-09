@@ -1,14 +1,13 @@
 // Simulated backend using localStorage
 
-export type BookingType = "tour" | "car";
+export type BookingType = "tour";
 export type BookingStatus = "new" | "confirmed" | "completed" | "cancelled";
 
 export interface Booking {
   id: string;
   type: BookingType;
-  itemIndex: number; // index in tours or cars array
-  date: string; // ISO date
-  endDate?: string; // for car rentals
+  itemIndex: number;
+  date: string;
   name: string;
   email: string;
   phone: string;
@@ -30,7 +29,6 @@ const BOOKINGS_KEY = "nordan_bookings";
 const BLOCKED_KEY = "nordan_blocked";
 const ADMIN_KEY = "nordan_admin_auth";
 
-// Demo admin credentials
 const ADMIN_EMAIL = "admin@nordan.is";
 const ADMIN_PASS = "nordan2024";
 
@@ -38,7 +36,6 @@ function genId(): string {
   return Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
 }
 
-// --- Bookings ---
 export function getBookings(): Booking[] {
   try {
     return JSON.parse(localStorage.getItem(BOOKINGS_KEY) || "[]");
@@ -67,7 +64,6 @@ export function deleteBooking(id: string) {
   saveBookings(getBookings().filter((b) => b.id !== id));
 }
 
-// --- Blocked dates ---
 export function getBlockedDates(): BlockedDate[] {
   try {
     return JSON.parse(localStorage.getItem(BLOCKED_KEY) || "[]");
@@ -90,7 +86,6 @@ export function isDateBlocked(type: BookingType, itemIndex: number, date: string
   return getBlockedDates().some((b) => b.type === type && b.itemIndex === itemIndex && b.date === date);
 }
 
-// --- Admin auth (simulated) ---
 export function adminLogin(email: string, password: string): boolean {
   if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
     localStorage.setItem(ADMIN_KEY, "true");
@@ -107,17 +102,15 @@ export function adminLogout() {
   localStorage.removeItem(ADMIN_KEY);
 }
 
-// --- Seed demo data ---
 export function seedDemoData() {
-  if (getBookings().length > 0) return; // already seeded
+  if (getBookings().length > 0) return;
   const now = new Date();
   const demoBookings: Omit<Booking, "id" | "status" | "createdAt">[] = [
     { type: "tour", itemIndex: 0, date: new Date(now.getTime() + 3 * 86400000).toISOString().split("T")[0], name: "John Smith", email: "john@example.com", phone: "+354 555 1234", people: 4, notes: "Anniversary trip" },
     { type: "tour", itemIndex: 1, date: new Date(now.getTime() + 5 * 86400000).toISOString().split("T")[0], name: "Anna Kowalska", email: "anna@example.com", phone: "+48 600 123 456", people: 2, notes: "" },
-    { type: "car", itemIndex: 1, date: new Date(now.getTime() + 2 * 86400000).toISOString().split("T")[0], endDate: new Date(now.getTime() + 7 * 86400000).toISOString().split("T")[0], name: "Erik Magnússon", email: "erik@example.is", phone: "+354 777 8899", people: 1, notes: "Need child seat" },
+    { type: "tour", itemIndex: 2, date: new Date(now.getTime() + 7 * 86400000).toISOString().split("T")[0], name: "Yuki Tanaka", email: "yuki@example.jp", phone: "+81 90 1234 5678", people: 3, notes: "Camera equipment" },
   ];
   demoBookings.forEach((b) => addBooking(b));
-  // mark one as confirmed
   const all = getBookings();
   if (all[0]) updateBookingStatus(all[0].id, "confirmed");
 }

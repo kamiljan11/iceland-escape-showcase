@@ -17,24 +17,24 @@ const reviews: Review[] = [
     name: "Sarah & Tom",
     country: { en: "United Kingdom", pl: "Wielka Brytania", is: "Bretland" },
     text: {
-      en: "Absolutely incredible experience! Our guide Jón knew every hidden waterfall and secret hot spring. The SUV handled the F-roads like a charm. Best holiday ever.",
-      pl: "Absolutnie niesamowite doświadczenie! Nasz przewodnik Jón znał każdy ukryty wodospad i tajemnicze gorące źródło. SUV radził sobie na drogach F znakomicie. Najlepsze wakacje w życiu.",
-      is: "Algjörlega ótrúleg upplifun! Leiðsögumaðurinn okkar Jón þekkti hvern falinn foss og leynilega heita lauginn. Jeppinn tók F-vegina snurðulaust. Besta frí sem við höfum farið í.",
+      en: "Absolutely incredible experience! Our guide Jón knew every hidden waterfall and secret hot spring. The Golden Circle tour exceeded all expectations. Best holiday ever.",
+      pl: "Absolutnie niesamowite doświadczenie! Nasz przewodnik Jón znał każdy ukryty wodospad i tajemnicze gorące źródło. Wycieczka po Złotym Kręgu przerosła nasze oczekiwania. Najlepsze wakacje w życiu.",
+      is: "Algjörlega ótrúleg upplifun! Leiðsögumaðurinn okkar Jón þekkti hvern falinn foss og leynilega heita lauginn. Gullna hringurinn fór langt fram úr væntingum. Besta frí sem við höfum farið í.",
     },
     rating: 5,
-    tour: "Golden Circle + F-road Adventure",
+    tour: "Golden Circle",
     avatar: "S",
   },
   {
     name: "Marcus Lindqvist",
     country: { en: "Sweden", pl: "Szwecja", is: "Svíþjóð" },
     text: {
-      en: "Rented a camper for 10 days and drove the Ring Road. Everything was perfect — the vehicle, the camping gear, the route suggestions. Norðan made our Iceland dream real.",
-      pl: "Wynajęliśmy kampera na 10 dni i objechaliśmy Ring Road. Wszystko było idealne — pojazd, sprzęt kempingowy, sugestie trasy. Norðan spełnił nasze islandzkie marzenie.",
-      is: "Leigðum húsbíl í 10 daga og keyrðum hringveginn. Allt var fullkomið — ökutækið, tjaldabúnaðurinn, leiðartillögurnar. Norðan gerði íslandsdrauminn okkar að veruleika.",
+      en: "Booked the South Coast tour and the Northern Lights expedition. Both were phenomenal. The guides are incredibly knowledgeable and passionate about Iceland's nature. Norðan is the real deal.",
+      pl: "Zarezerwowaliśmy wycieczkę po Południowym Wybrzeżu i ekspedycję na zorzę polarną. Obie były fenomenalne. Przewodnicy są niesamowicie kompetentni i pasjonują się islandzką przyrodą. Norðan to prawdziwa perła.",
+      is: "Bókaði Suðurströndina og norðurljósaferðina. Báðar voru stórkostlegar. Leiðsögumennirnir eru ótrúlega fróðir og brennandi áhugasamir um íslenska náttúru. Norðan er raunverulegt.",
     },
     rating: 5,
-    tour: "Camper Ring Road",
+    tour: "South Coast + Northern Lights",
     avatar: "M",
   },
   {
@@ -99,7 +99,6 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Aggregate rating bar */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

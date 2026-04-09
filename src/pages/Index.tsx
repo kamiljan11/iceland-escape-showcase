@@ -7,7 +7,6 @@ import HowItWorks from "@/components/HowItWorks";
 import ToursSection from "@/components/ToursSection";
 import PopularRoutes from "@/components/PopularRoutes";
 import SeasonsSection from "@/components/SeasonsSection";
-import FleetSection from "@/components/FleetSection";
 import PickupLocations from "@/components/PickupLocations";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AboutSection from "@/components/AboutSection";
@@ -27,7 +26,6 @@ const Index = () => (
       <ToursSection />
       <PopularRoutes />
       <SeasonsSection />
-      <FleetSection />
       <PickupLocations />
       <TestimonialsSection />
       <AboutSection />

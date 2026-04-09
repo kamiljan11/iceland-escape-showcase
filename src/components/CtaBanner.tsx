@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { MapPin, Camera, BarChart3, Zap, ArrowRight } from "lucide-react";
+import { MapPin, Camera, Users, Zap, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { translations as tr, t } from "@/i18n/translations";
+import { t } from "@/i18n/translations";
 
 const CtaBanner = () => {
   const { lang } = useLanguage();
@@ -9,7 +9,7 @@ const CtaBanner = () => {
   const features = [
     { icon: MapPin, label: t({ en: "Custom Itineraries", pl: "Własne trasy", is: "Sérsniðnar leiðir" }, lang) },
     { icon: Camera, label: t({ en: "Photo Stops", pl: "Punkty foto", is: "Ljósmyndastaðir" }, lang) },
-    { icon: BarChart3, label: t({ en: "Best Prices", pl: "Najlepsze ceny", is: "Besta verð" }, lang) },
+    { icon: Users, label: t({ en: "Local Guides", pl: "Lokalni przewodnicy", is: "Staðbundnir leiðsögumenn" }, lang) },
     { icon: Zap, label: t({ en: "Instant Booking", pl: "Błyskawiczna rezerwacja", is: "Tafarlaus bókun" }, lang) },
   ];
 
@@ -48,9 +48,9 @@ const CtaBanner = () => {
           className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 font-body"
         >
           {t({
-            en: "Handcrafted tours & premium vehicles. Everything planned for you — routes, stops, experiences. One booking. Zero stress.",
-            pl: "Ręcznie tworzone wycieczki & premium auta. Wszystko zaplanowane — trasy, przystanki, doświadczenia. Jedna rezerwacja. Zero stresu.",
-            is: "Handgerðar ferðir og úrvalsbílar. Allt skipulagt fyrir þig — leiðir, stopp, upplifun. Ein bókun. Enginn streittur.",
+            en: "Handcrafted tours with local guides. Every detail planned — routes, stops, experiences. One booking. Zero stress.",
+            pl: "Ręcznie tworzone wycieczki z lokalnymi przewodnikami. Każdy szczegół zaplanowany — trasy, przystanki, doświadczenia. Jedna rezerwacja. Zero stresu.",
+            is: "Handgerðar ferðir með staðbundnum leiðsögumönnum. Allt skipulagt — leiðir, stopp, upplifun. Ein bókun. Enginn streittur.",
           }, lang)}
         </motion.p>
 
@@ -80,12 +80,12 @@ const CtaBanner = () => {
             href="#tours"
             className="inline-flex items-center gap-3 px-10 py-4 rounded-lg bg-gradient-aurora font-body font-bold text-sm tracking-widest uppercase text-primary-foreground hover:opacity-90 transition-opacity"
           >
-            {t({ en: "Get started", pl: "Zacznij teraz", is: "Byrjaðu" }, lang)}
+            {t({ en: "Browse tours", pl: "Zobacz wycieczki", is: "Skoða ferðir" }, lang)}
             <ArrowRight className="w-4 h-4" />
           </a>
           <span className="text-muted-foreground text-sm font-body">
             {t({ en: "From only", pl: "Już od", is: "Frá aðeins" }, lang)}{" "}
-            <span className="text-primary font-semibold">6 900 ISK/{t({ en: "day", pl: "dzień", is: "dag" }, lang)}</span>
+            <span className="text-primary font-semibold">9 900 ISK/{t({ en: "person", pl: "osoba", is: "manneskja" }, lang)}</span>
           </span>
         </motion.div>
 

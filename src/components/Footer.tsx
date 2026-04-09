@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Shield, Clock } from "lucide-react";
 
 const footerSections = {
   company: { en: "Company", pl: "Firma", is: "Fyrirtæki" },
-  services: { en: "Services", pl: "Usługi", is: "Þjónusta" },
+  services: { en: "Tours", pl: "Wycieczki", is: "Ferðir" },
   explore: { en: "Explore Iceland", pl: "Odkryj Islandię", is: "Uppgötvaðu Ísland" },
   contact: { en: "Contact", pl: "Kontakt", is: "Hafa samband" },
   safety: { en: "Iceland Travel Safety", pl: "Bezpieczeństwo w Islandii", is: "Ferðaöryggi á Íslandi" },
@@ -23,23 +23,22 @@ const footerSections = {
 const companyLinks = [
   { label: { en: "About us", pl: "O nas", is: "Um okkur" }, href: "#about" },
   { label: { en: "Our team", pl: "Nasz zespół", is: "Liðið okkar" }, href: "#about" },
-  { label: { en: "Careers", pl: "Kariera", is: "Störf" }, href: "#" },
+  { label: { en: "FAQ", pl: "FAQ", is: "Algengar spurningar" }, href: "#faq" },
   { label: { en: "Blog", pl: "Blog", is: "Blogg" }, href: "#" },
 ];
 
 const serviceLinks = [
-  { label: { en: "Guided tours", pl: "Wycieczki z przewodnikiem", is: "Ferðir með leiðsögumanni" }, href: "#tours" },
-  { label: { en: "Car & SUV rental", pl: "Wynajem aut i SUV", is: "Bílaleiga" }, href: "#fleet" },
-  { label: { en: "Camper rental", pl: "Wynajem kamperów", is: "Húsbílaleiga" }, href: "#fleet" },
-  { label: { en: "Airport transfers", pl: "Transfery lotniskowe", is: "Flugvallarakstri" }, href: "#contact" },
-  { label: { en: "Private tours", pl: "Wycieczki prywatne", is: "Einkaferðir" }, href: "#tours" },
+  { label: { en: "Golden Circle", pl: "Złoty Krąg", is: "Gullni hringurinn" }, href: "#tours" },
+  { label: { en: "Ice Caves", pl: "Jaskinie lodowe", is: "Íshellar" }, href: "#tours" },
+  { label: { en: "Northern Lights", pl: "Zorza polarna", is: "Norðurljós" }, href: "#tours" },
+  { label: { en: "Private tours", pl: "Wycieczki prywatne", is: "Einkaferðir" }, href: "#contact" },
+  { label: { en: "Custom itineraries", pl: "Trasy na zamówienie", is: "Sérsniðnar leiðir" }, href: "#contact" },
 ];
 
 const exploreLinks = [
-  { label: { en: "Golden Circle", pl: "Złoty Krąg", is: "Gullni hringurinn" }, href: "#routes" },
+  { label: { en: "Golden Circle route", pl: "Trasa Złotego Kręgu", is: "Gullni hringurinn leið" }, href: "#routes" },
   { label: { en: "South Coast", pl: "Południowe Wybrzeże", is: "Suðurströnd" }, href: "#routes" },
   { label: { en: "Ring Road", pl: "Ring Road", is: "Hringvegurinn" }, href: "#routes" },
-  { label: { en: "Northern Lights", pl: "Zorza polarna", is: "Norðurljós" }, href: "#tours" },
   { label: { en: "Snæfellsnes", pl: "Snæfellsnes", is: "Snæfellsnes" }, href: "#routes" },
 ];
 
@@ -62,7 +61,6 @@ const Footer = () => {
       {/* Main footer grid */}
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Company */}
           <div>
             <h4 className="font-body font-semibold text-sm mb-4">{t(footerSections.company, lang)}</h4>
             <ul className="space-y-2.5">
@@ -72,7 +70,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="font-body font-semibold text-sm mb-4">{t(footerSections.services, lang)}</h4>
             <ul className="space-y-2.5">
@@ -82,7 +79,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Explore */}
           <div>
             <h4 className="font-body font-semibold text-sm mb-4">{t(footerSections.explore, lang)}</h4>
             <ul className="space-y-2.5">
@@ -92,7 +88,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact info */}
           <div>
             <h4 className="font-body font-semibold text-sm mb-4">{t(footerSections.contact, lang)}</h4>
             <ul className="space-y-3">
