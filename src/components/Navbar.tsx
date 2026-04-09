@@ -15,6 +15,7 @@ const Navbar = () => {
   const links = [
     { label: t(tr.nav.tours, lang), href: "#tours" },
     { label: t(tr.nav.fleet, lang), href: "#fleet" },
+    { label: t({ en: "Routes", pl: "Trasy", is: "Leiðir" }, lang), href: "#routes" },
     { label: t(tr.nav.about, lang), href: "#about" },
     { label: t(tr.nav.contact, lang), href: "#contact" },
   ];

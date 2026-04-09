@@ -1,0 +1,93 @@
+import { motion } from "framer-motion";
+import { Search, CalendarCheck, Mountain } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { t, type Lang } from "@/i18n/translations";
+
+interface Step {
+  icon: typeof Search;
+  num: string;
+  title: Record<Lang, string>;
+  desc: Record<Lang, string>;
+}
+
+const steps: Step[] = [
+  {
+    icon: Search,
+    num: "01",
+    title: { en: "Choose your adventure", pl: "Wybierz swoją przygodę", is: "Veldu ævintýrið þitt" },
+    desc: {
+      en: "Browse our curated tours and 4×4 fleet. Filter by season, activity type, or route — Golden Circle, South Coast, Ring Road and more.",
+      pl: "Przeglądaj nasze wycieczki i flotę 4×4. Filtruj po sezonie, aktywności lub trasie — Golden Circle, Południowe Wybrzeże, Ring Road.",
+      is: "Skoðaðu ferðir og fjórhjóladrifna bílaflotann okkar. Síaðu eftir árstíð, tegund eða leið — Gullni hringurinn, Suðurströnd, Hringvegurinn.",
+    },
+  },
+  {
+    icon: CalendarCheck,
+    num: "02",
+    title: { en: "Book instantly", pl: "Zarezerwuj natychmiast", is: "Bókaðu samstundis" },
+    desc: {
+      en: "Secure your dates with free cancellation up to 48 hours. No deposit needed. All CDW + gravel/ash protection included.",
+      pl: "Zarezerwuj z darmowym anulowaniem do 48h. Bez depozytu. CDW + ochrona żwir/popiół w cenie.",
+      is: "Bókaðu með ókeypis afpöntun allt að 48 klst. Enginn innborgun. CDW + möl/öskutrygging innifalin.",
+    },
+  },
+  {
+    icon: Mountain,
+    num: "03",
+    title: { en: "Explore Iceland", pl: "Odkrywaj Islandię", is: "Uppgötvaðu Ísland" },
+    desc: {
+      en: "Pick up at KEF Airport or Reykjavík. Our team briefs you on road conditions, weather, and hidden gems. 24/7 roadside support included.",
+      pl: "Odbierz na lotnisku KEF lub w Reykjavíku. Zespół poinformuje Cię o warunkach drogowych i ukrytych perłach. Pomoc 24/7.",
+      is: "Sæktu á KEF flugvelli eða í Reykjavík. Liðið okkar upplýsir þig um vegaástand og falda gimsteina. Vegaþjónusta 24/7.",
+    },
+  },
+];
+
+const heading = {
+  label: { en: "How it works", pl: "Jak to działa", is: "Hvernig virkar þetta" },
+  title: { en: "Three steps to your Icelandic adventure", pl: "Trzy kroki do islandzkiej przygody", is: "Þrjú skref að íslensku ævintýri" },
+};
+
+const HowItWorks = () => {
+  const { lang } = useLanguage();
+
+  return (
+    <section className="py-24">
+      <div className="container mx-auto px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-body">{t(heading.label, lang)}</p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {steps.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="relative text-center group"
+              >
+                {/* Connector line */}
+                {i < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-10 left-[60%] w-[80%] border-t border-dashed border-border/40" />
+                )}
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[hsl(var(--aurora-green))] to-[hsl(var(--glacier-blue))] flex items-center justify-center mx-auto mb-5 group-hover:scale-105 transition-transform">
+                  <Icon className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <span className="text-primary/40 text-xs font-body font-bold tracking-widest">{s.num}</span>
+                <h3 className="font-heading text-xl font-bold mt-1 mb-3">{t(s.title, lang)}</h3>
+                <p className="text-muted-foreground text-sm font-body leading-relaxed">{t(s.desc, lang)}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HowItWorks;
