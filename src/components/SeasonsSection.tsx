@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Sun, Snowflake, Leaf, Flower2 } from "lucide-react";
+import { Sun, Snowflake, Leaf, Flower2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 
@@ -68,26 +69,41 @@ const heading = {
   title: { en: "Iceland in every season", pl: "Islandia w każdej porze roku", is: "Ísland í hverju árstíð" },
   desc: {
     en: "There's no bad time to visit Iceland — each season offers unique experiences you won't find anywhere else.",
-    pl: "Nie ma złego czasu na wizytę na Islandii — każda pora roku oferuje unikalne doświadczenia, których nie znajdziesz nigdzie indziej.",
+    pl: "Nie ma złego czasu na wizytę na Islandii — każda pora roku oferuje unikalne doświadczenia.",
     is: "Enginn slæmur tími til að heimsækja Ísland — hvert árstíð býður upp á einstaka upplifun.",
   },
 };
 
 const SeasonsSection = () => {
   const { lang } = useLanguage();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const w = scrollRef.current.offsetWidth * 0.7;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -w : w, behavior: "smooth" });
+  };
 
   return (
-    <section className="py-24 bg-gradient-dark">
-      <div className="container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-6">
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3 font-body">{t(heading.label, lang)}</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
+    <section className="py-16 md:py-24 bg-gradient-dark">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4 md:mb-6">
+          <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
         </motion.div>
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-14">
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-body text-sm md:text-base text-center max-w-2xl mx-auto mb-10 md:mb-14">
           {t(heading.desc, lang)}
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex lg:hidden justify-end gap-2 mb-4 px-1">
+          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
+          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex lg:grid lg:grid-cols-4 gap-4 md:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0"
+        >
           {seasons.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -97,17 +113,17 @@ const SeasonsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-card border border-border/50 rounded-xl p-6 hover:border-primary/30 transition-colors group"
+                className="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto snap-start bg-card border border-border/50 rounded-xl p-5 md:p-6 hover:border-primary/30 transition-colors group"
               >
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${s.colorClass} flex items-center justify-center mb-4`}>
-                  <Icon className="w-6 h-6 text-primary-foreground" />
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br ${s.colorClass} flex items-center justify-center mb-3 md:mb-4`}>
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-1">{t(s.name, lang)}</h3>
-                <p className="text-muted-foreground text-xs font-body mb-1">{t(s.months, lang)}</p>
-                <p className="text-primary text-xs font-body font-semibold mb-4">{s.temp}</p>
-                <ul className="space-y-2">
+                <h3 className="font-heading text-lg md:text-xl font-bold mb-1">{t(s.name, lang)}</h3>
+                <p className="text-muted-foreground text-[11px] md:text-xs font-body mb-1">{t(s.months, lang)}</p>
+                <p className="text-primary text-[11px] md:text-xs font-body font-semibold mb-3 md:mb-4">{s.temp}</p>
+                <ul className="space-y-1.5 md:space-y-2">
                   {s.highlights[lang].map((h) => (
-                    <li key={h} className="text-sm text-secondary-foreground font-body flex items-center gap-2">
+                    <li key={h} className="text-xs md:text-sm text-secondary-foreground font-body flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                       {h}
                     </li>

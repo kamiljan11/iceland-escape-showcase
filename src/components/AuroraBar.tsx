@@ -5,15 +5,15 @@ import { t, type Lang } from "@/i18n/translations";
 import { useEffect, useState } from "react";
 
 const auroraTexts = {
-  on: { en: "Northern Lights forecast is", pl: "Prognoza zorzy polarnej:", is: "Norðurljósaspá:" },
-  status_on: { en: "ACTIVE tonight", pl: "AKTYWNA dziś wieczorem", is: "VIRK í kvöld" },
-  status_off: { en: "Low tonight", pl: "Niska dziś", is: "Lítil í kvöld" },
-  road: { en: "Road conditions:", pl: "Stan dróg:", is: "Vegaástand:" },
-  road_ok: { en: "All main roads open", pl: "Wszystkie główne drogi otwarte", is: "Allir aðalvegir opnir" },
-  road_warn: { en: "Some highland roads closed", pl: "Niektóre drogi górskie zamknięte", is: "Sumir hálendavegir lokaðir" },
+  on: { en: "Aurora:", pl: "Zorza:", is: "Norðurljós:" },
+  status_on: { en: "ACTIVE", pl: "AKTYWNA", is: "VIRK" },
+  status_off: { en: "Low", pl: "Niska", is: "Lítil" },
+  road: { en: "Roads:", pl: "Drogi:", is: "Vegir:" },
+  road_ok: { en: "All open", pl: "Otwarte", is: "Allir opnir" },
+  road_warn: { en: "Some closed", pl: "Niektóre zamknięte", is: "Sumir lokaðir" },
   temp: { en: "Reykjavík", pl: "Reykjavík", is: "Reykjavík" },
-  kp: { en: "Kp index", pl: "Indeks Kp", is: "Kp vísitala" },
-  sunset: { en: "Sunset", pl: "Zachód słońca", is: "Sólsetur" },
+  kp: { en: "Kp", pl: "Kp", is: "Kp" },
+  sunset: { en: "Sunset", pl: "Zachód", is: "Sólsetur" },
 };
 
 const AuroraBar = () => {
@@ -25,7 +25,6 @@ const AuroraBar = () => {
     return () => clearInterval(id);
   }, []);
 
-  // Simulate seasonal data
   const month = now.getMonth();
   const isWinter = month >= 9 || month <= 2;
   const isSummer = month >= 5 && month <= 7;
@@ -37,39 +36,35 @@ const AuroraBar = () => {
 
   return (
     <div className="bg-card/80 border-b border-border/30 backdrop-blur-sm">
-      <div className="container mx-auto px-6 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs font-body">
-        {/* Aurora status */}
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="flex items-center gap-2"
-        >
-          <span className={`w-2 h-2 rounded-full ${auroraActive ? "bg-[hsl(var(--aurora-green))] animate-pulse" : "bg-muted-foreground/40"}`} />
+      <div className="container mx-auto px-3 md:px-6 py-2 md:py-2.5 flex items-center justify-center gap-3 md:gap-x-6 text-[10px] md:text-xs font-body overflow-x-auto scrollbar-hide">
+        {/* Aurora */}
+        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-1.5 flex-shrink-0">
+          <span className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${auroraActive ? "bg-[hsl(var(--aurora-green))] animate-pulse" : "bg-muted-foreground/40"}`} />
           <span className="text-muted-foreground">{t(auroraTexts.on, lang)}</span>
           <span className={`font-bold ${auroraActive ? "text-[hsl(var(--aurora-green))]" : "text-muted-foreground"}`}>
             {t(auroraActive ? auroraTexts.status_on : auroraTexts.status_off, lang)}
           </span>
         </motion.span>
 
-        <span className="hidden sm:block w-px h-4 bg-border/50" />
+        <span className="w-px h-3 md:h-4 bg-border/50 flex-shrink-0" />
 
-        {/* Kp index */}
-        <span className="flex items-center gap-1.5 text-muted-foreground">
-          <Eye className="w-3.5 h-3.5" />
+        {/* Kp */}
+        <span className="flex items-center gap-1 text-muted-foreground flex-shrink-0">
+          <Eye className="w-3 h-3 md:w-3.5 md:h-3.5" />
           {t(auroraTexts.kp, lang)}: <span className="text-foreground font-semibold">{kp}/9</span>
         </span>
 
-        <span className="hidden sm:block w-px h-4 bg-border/50" />
+        <span className="w-px h-3 md:h-4 bg-border/50 flex-shrink-0" />
 
         {/* Weather */}
-        <span className="flex items-center gap-1.5 text-muted-foreground">
-          <WeatherIcon className="w-3.5 h-3.5" />
-          {t(auroraTexts.temp, lang)} <span className="text-foreground font-semibold">{temp}°C</span>
+        <span className="flex items-center gap-1 text-muted-foreground flex-shrink-0">
+          <WeatherIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
+          <span className="text-foreground font-semibold">{temp}°C</span>
         </span>
 
         <span className="hidden md:block w-px h-4 bg-border/50" />
 
-        {/* Road conditions */}
+        {/* Road */}
         <span className="hidden md:flex items-center gap-1.5 text-muted-foreground">
           <Wind className="w-3.5 h-3.5" />
           {t(auroraTexts.road, lang)}{" "}
@@ -83,7 +78,7 @@ const AuroraBar = () => {
         {/* Sunset */}
         <span className="hidden lg:flex items-center gap-1.5 text-muted-foreground">
           <Sun className="w-3.5 h-3.5" />
-          {t(auroraTexts.sunset, lang)}: <span className="text-foreground font-semibold">{isSummer ? "∞ Midnight Sun" : sunset}</span>
+          {t(auroraTexts.sunset, lang)}: <span className="text-foreground font-semibold">{isSummer ? "∞" : sunset}</span>
         </span>
       </div>
     </div>
