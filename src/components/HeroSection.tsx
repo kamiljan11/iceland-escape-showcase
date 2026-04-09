@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar } from "lucide-react";
+import { MapPin, Compass } from "lucide-react";
 import heroImg from "@/assets/hero-iceland.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as tr, t } from "@/i18n/translations";
@@ -34,9 +34,9 @@ const HeroSection = () => {
             <MapPin className="w-5 h-5" />
             {t(tr.hero.cta_tours, lang)}
           </a>
-          <a href="#fleet" className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-glass font-body font-semibold text-foreground hover:bg-secondary transition-colors">
-            <Calendar className="w-5 h-5" />
-            {t(tr.hero.cta_fleet, lang)}
+          <a href="#routes" className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-glass font-body font-semibold text-foreground hover:bg-secondary transition-colors">
+            <Compass className="w-5 h-5" />
+            {t(tr.hero.cta_routes, lang)}
           </a>
         </motion.div>
       </div>

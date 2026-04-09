@@ -58,8 +58,8 @@ const ContactSection = () => {
             <input type="email" placeholder="Email" required className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50" />
             <select className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-sm font-body text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50">
               <option>{t(tr.contact.selectOptions.tour, lang)}</option>
-              <option>{t(tr.contact.selectOptions.car, lang)}</option>
-              <option>{t(tr.contact.selectOptions.both, lang)}</option>
+              <option>{t(tr.contact.selectOptions.private, lang)}</option>
+              <option>{t(tr.contact.selectOptions.group, lang)}</option>
               <option>{t(tr.contact.selectOptions.other, lang)}</option>
             </select>
             <textarea placeholder={t(tr.contact.message, lang)} rows={4} required className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" />

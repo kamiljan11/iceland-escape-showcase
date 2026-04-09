@@ -6,15 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { translations as tr, t, Lang } from "@/i18n/translations";
-import { addBooking, isDateBlocked, BookingType } from "@/lib/store";
+import { t, Lang } from "@/i18n/translations";
+import { addBooking, isDateBlocked } from "@/lib/store";
 import { CalendarCheck, CheckCircle2 } from "lucide-react";
 
 const labels: Record<string, Record<Lang, string>> = {
-  title_tour: { en: "Book tour", pl: "Zarezerwuj wycieczkę", is: "Bóka ferð" },
-  title_car: { en: "Rent vehicle", pl: "Wypożycz pojazd", is: "Leigja ökutæki" },
+  title: { en: "Book tour", pl: "Zarezerwuj wycieczkę", is: "Bóka ferð" },
   date: { en: "Date", pl: "Data", is: "Dagsetning" },
-  dateEnd: { en: "Return date", pl: "Data zwrotu", is: "Skiladagur" },
   name: { en: "Full name", pl: "Imię i nazwisko", is: "Fullt nafn" },
   email: { en: "Email", pl: "Email", is: "Tölvupóstur" },
   phone: { en: "Phone", pl: "Telefon", is: "Sími" },
@@ -30,16 +28,14 @@ const labels: Record<string, Record<Lang, string>> = {
 interface Props {
   open: boolean;
   onClose: () => void;
-  type: BookingType;
   itemIndex: number;
   itemName: string;
 }
 
-export default function BookingModal({ open, onClose, type, itemIndex, itemName }: Props) {
+export default function BookingModal({ open, onClose, itemIndex, itemName }: Props) {
   const { lang } = useLanguage();
   const [step, setStep] = useState<"form" | "success">("form");
   const [date, setDate] = useState<Date | undefined>();
-  const [endDate, setEndDate] = useState<Date | undefined>();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -47,21 +43,18 @@ export default function BookingModal({ open, onClose, type, itemIndex, itemName 
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
 
-  const isCar = type === "car";
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!date) return;
     const dateStr = date.toISOString().split("T")[0];
-    if (isDateBlocked(type, itemIndex, dateStr)) {
+    if (isDateBlocked("tour", itemIndex, dateStr)) {
       setError(t(labels.blocked, lang));
       return;
     }
     addBooking({
-      type,
+      type: "tour",
       itemIndex,
       date: dateStr,
-      endDate: isCar && endDate ? endDate.toISOString().split("T")[0] : undefined,
       name,
       email,
       phone,
@@ -74,7 +67,6 @@ export default function BookingModal({ open, onClose, type, itemIndex, itemName 
   const handleClose = () => {
     setStep("form");
     setDate(undefined);
-    setEndDate(undefined);
     setName("");
     setEmail("");
     setPhone("");
@@ -99,7 +91,7 @@ export default function BookingModal({ open, onClose, type, itemIndex, itemName 
             <DialogHeader>
               <DialogTitle className="font-heading flex items-center gap-2">
                 <CalendarCheck className="w-5 h-5 text-primary" />
-                {t(isCar ? labels.title_car : labels.title_tour, lang)}
+                {t(labels.title, lang)}
               </DialogTitle>
               <DialogDescription className="font-body">{itemName}</DialogDescription>
             </DialogHeader>
@@ -117,21 +109,6 @@ export default function BookingModal({ open, onClose, type, itemIndex, itemName 
                   />
                 </div>
               </div>
-
-              {isCar && (
-                <div>
-                  <Label className="font-body text-sm">{t(labels.dateEnd, lang)}</Label>
-                  <div className="flex justify-center mt-1">
-                    <Calendar
-                      mode="single"
-                      selected={endDate}
-                      onSelect={setEndDate}
-                      disabled={(d) => d < (date || new Date())}
-                      className="rounded-md border"
-                    />
-                  </div>
-                </div>
-              )}
 
               <div className="grid grid-cols-2 gap-3">
                 <div>

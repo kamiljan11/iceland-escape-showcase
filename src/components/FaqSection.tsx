@@ -16,38 +16,14 @@ interface FaqItem {
 const faqs: FaqItem[] = [
   {
     q: {
-      en: "Do I need a 4×4 for driving in Iceland?",
-      pl: "Czy potrzebuję samochodu 4×4 do jazdy po Islandii?",
-      is: "Þarf ég fjórhjóladrif til að keyra á Íslandi?",
+      en: "What tours do you offer?",
+      pl: "Jakie wycieczki oferujecie?",
+      is: "Hvaða ferðir bjóðið þið?",
     },
     a: {
-      en: "For the Ring Road and main attractions, a regular car is fine in summer. However, F-roads (highland roads) are only accessible with a 4×4 vehicle and are closed in winter. We recommend our SUV 4×4 if you plan to explore beyond paved roads.",
-      pl: "Na Ring Road i główne atrakcje zwykłe auto wystarczy latem. Drogi F (górzysty interior) wymagają jednak samochodu 4×4 i są zamknięte zimą. Polecamy nasz SUV 4×4, jeśli planujesz zjechać z utwardzonych dróg.",
-      is: "Fyrir hringveginn og helstu áfangastaði dugir venjulegur bíll á sumrin. Hins vegar eru F-vegir (hálendis-vegir) aðeins aðgengilegir með fjórhjóladrifnum bíl og lokaðir á veturna. Við mælum með SUV 4×4 ef þú ætlar að skoða land utan malarvega.",
-    },
-  },
-  {
-    q: {
-      en: "What insurance is included with the rental?",
-      pl: "Jakie ubezpieczenie jest zawarte w cenie wynajmu?",
-      is: "Hvaða trygging er innifalin í leigunni?",
-    },
-    a: {
-      en: "All vehicles include CDW (Collision Damage Waiver) and theft protection. Our SUV package includes full coverage (SCDW) plus gravel, ash and sand damage protection — essential for Iceland's unpredictable conditions. Additional windshield and tire coverage is available.",
-      pl: "Wszystkie pojazdy mają CDW (ubezpieczenie od kolizji) i ochronę przed kradzieżą. Pakiet SUV zawiera pełne ubezpieczenie (SCDW) plus ochronę przed żwirem, popiołem i piaskiem — niezbędne w islandzkich warunkach. Dostępne jest dodatkowe ubezpieczenie szyb i opon.",
-      is: "Allir bílar eru með CDW (árekstrartryggingu) og þjófnaðartryggingu. SUV pakkinn okkar inniheldur fulla tryggingu (SCDW) ásamt möl-, ösku- og sandtryggingu — nauðsynlegt á Íslandi. Viðbótartrygging rúða og hjólbarða er í boði.",
-    },
-  },
-  {
-    q: {
-      en: "Can I pick up the car at Keflavík Airport?",
-      pl: "Czy mogę odebrać samochód na lotnisku Keflavík?",
-      is: "Get ég sótt bílinn á Keflavíkurflugvelli?",
-    },
-    a: {
-      en: "Yes! We offer free airport pickup and drop-off at Keflavík International Airport (KEF). Our shuttle meets you at the terminal and takes you to our nearby lot. We also have a downtown Reykjavík pickup point at Laugavegur 42.",
-      pl: "Tak! Oferujemy bezpłatny odbiór i zwrot na lotnisku Keflavík (KEF). Nasz shuttle czeka na terminalu i zabiera Cię na parking. Mamy też punkt odbioru w centrum Reykjavíku przy Laugavegur 42.",
-      is: "Já! Við bjóðum ókeypis afhendingu og skil á Keflavíkurflugvelli (KEF). Rútan okkar bíður þín á flugstöðinni. Við erum einnig með afhendingarstað í miðbæ Reykjavíkur, Laugavegi 42.",
+      en: "We offer guided tours across Iceland's most iconic landscapes — Golden Circle, Ice Caves, Northern Lights, South Coast, Snæfellsnes and more. We also create custom private itineraries for families, couples and groups.",
+      pl: "Oferujemy wycieczki z przewodnikiem po najsłynniejszych krajobrazach Islandii — Złoty Krąg, Jaskinie Lodowe, Zorza Polarna, Południowe Wybrzeże, Snæfellsnes i więcej. Tworzymy też prywatne trasy na zamówienie dla rodzin, par i grup.",
+      is: "Við bjóðum ferðir með leiðsögumanni um þekktustu landslag Íslands — Gullni hringurinn, Íshellar, Norðurljós, Suðurströnd, Snæfellsnes og fleira. Við búum einnig til sérsniðnar einkaferðir.",
     },
   },
   {
@@ -84,6 +60,30 @@ const faqs: FaqItem[] = [
       en: "Layers are key! Bring waterproof outer layers, warm fleece, thermal underwear, sturdy hiking boots, and a swimsuit for hot springs. Weather changes quickly in Iceland — you can experience all four seasons in one day. We provide a free packing checklist with every booking.",
       pl: "Warstwy to klucz! Weź wodoodporną kurtkę, ciepły polar, bieliznę termoaktywną, solidne buty trekkingowe i strój kąpielowy na gorące źródła. Pogoda na Islandii zmienia się błyskawicznie — cztery pory roku w jednym dniu. Z każdą rezerwacją wysyłamy bezpłatną listę do spakowania.",
       is: "Lagaklæðnaður er lykillinn! Taktu vatnsheld yfirhöfn, hlýjan flís, hitanærbuxur, sterka gönguskó og sundföt fyrir heitar laugar. Veður breytast hratt á Íslandi. Við sendum ókeypis pakklista með hverri bókun.",
+    },
+  },
+  {
+    q: {
+      en: "What is your cancellation policy?",
+      pl: "Jaka jest polityka anulowania?",
+      is: "Hver er afpöntunarstefnan ykkar?",
+    },
+    a: {
+      en: "Free cancellation up to 48 hours before the tour. No deposit needed to book. If weather conditions make a tour unsafe, we reschedule at no extra cost or offer a full refund.",
+      pl: "Darmowe anulowanie do 48 godzin przed wycieczką. Bez depozytu przy rezerwacji. Jeśli warunki pogodowe uniemożliwiają wycieczkę, przesuwamy termin bez dodatkowych kosztów lub zwracamy pełną kwotę.",
+      is: "Ókeypis afpöntun allt að 48 klst. fyrir ferð. Enginn innborgun þarf. Ef veður gerir ferð óörugga, endurbókum við án aukakostnaðar eða bjóðum fulla endurgreiðslu.",
+    },
+  },
+  {
+    q: {
+      en: "Where do tours depart from?",
+      pl: "Skąd wyruszają wycieczki?",
+      is: "Hvaðan fara ferðirnar?",
+    },
+    a: {
+      en: "Most tours depart from our Reykjavík office at Laugavegur 42. We also offer pickup from Keflavík Airport (KEF) and major hotels in the Reykjavík area. Pickup details are confirmed after booking.",
+      pl: "Większość wycieczek wyrusza z naszego biura w Reykjavíku przy Laugavegur 42. Oferujemy też odbiór z lotniska Keflavík (KEF) i głównych hoteli w rejonie Reykjavíku. Szczegóły odbioru potwierdzamy po rezerwacji.",
+      is: "Flestar ferðir fara frá skrifstofu okkar í Reykjavík, Laugavegi 42. Við bjóðum einnig upp á að sækja á Keflavíkurflugvelli (KEF) og helstu hótelum á höfuðborgarsvæðinu. Upplýsingar um afhendingu eru staðfestar eftir bókun.",
     },
   },
 ];

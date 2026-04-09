@@ -16,9 +16,9 @@ const steps: Step[] = [
     num: "01",
     title: { en: "Choose your adventure", pl: "Wybierz swoją przygodę", is: "Veldu ævintýrið þitt" },
     desc: {
-      en: "Browse our curated tours and 4×4 fleet. Filter by season, activity type, or route — Golden Circle, South Coast, Ring Road and more.",
-      pl: "Przeglądaj nasze wycieczki i flotę 4×4. Filtruj po sezonie, aktywności lub trasie — Golden Circle, Południowe Wybrzeże, Ring Road.",
-      is: "Skoðaðu ferðir og fjórhjóladrifna bílaflotann okkar. Síaðu eftir árstíð, tegund eða leið — Gullni hringurinn, Suðurströnd, Hringvegurinn.",
+      en: "Browse our curated tours — Golden Circle, Ice Caves, Northern Lights, South Coast and more. Filter by season, activity type, or duration.",
+      pl: "Przeglądaj nasze wycieczki — Złoty Krąg, Jaskinie Lodowe, Zorza Polarna, Południowe Wybrzeże i więcej. Filtruj po sezonie, aktywności lub czasie trwania.",
+      is: "Skoðaðu ferðirnar okkar — Gullni hringurinn, Íshellar, Norðurljós, Suðurströnd og fleira. Síaðu eftir árstíð, tegund eða lengd.",
     },
   },
   {
@@ -26,9 +26,9 @@ const steps: Step[] = [
     num: "02",
     title: { en: "Book instantly", pl: "Zarezerwuj natychmiast", is: "Bókaðu samstundis" },
     desc: {
-      en: "Secure your dates with free cancellation up to 48 hours. No deposit needed. All CDW + gravel/ash protection included.",
-      pl: "Zarezerwuj z darmowym anulowaniem do 48h. Bez depozytu. CDW + ochrona żwir/popiół w cenie.",
-      is: "Bókaðu með ókeypis afpöntun allt að 48 klst. Enginn innborgun. CDW + möl/öskutrygging innifalin.",
+      en: "Secure your spot with free cancellation up to 48 hours. No deposit needed. Small group sizes guaranteed.",
+      pl: "Zarezerwuj miejsce z darmowym anulowaniem do 48h. Bez depozytu. Gwarantowane małe grupy.",
+      is: "Tryggðu þér sæti með ókeypis afpöntun allt að 48 klst. Enginn innborgun. Litlir hópar tryggðir.",
     },
   },
   {
@@ -36,9 +36,9 @@ const steps: Step[] = [
     num: "03",
     title: { en: "Explore Iceland", pl: "Odkrywaj Islandię", is: "Uppgötvaðu Ísland" },
     desc: {
-      en: "Pick up at KEF Airport or Reykjavík. Our team briefs you on road conditions, weather, and hidden gems. 24/7 roadside support included.",
-      pl: "Odbierz na lotnisku KEF lub w Reykjavíku. Zespół poinformuje Cię o warunkach drogowych i ukrytych perłach. Pomoc 24/7.",
-      is: "Sæktu á KEF flugvelli eða í Reykjavík. Liðið okkar upplýsir þig um vegaástand og falda gimsteina. Vegaþjónusta 24/7.",
+      en: "Meet your local guide at the pickup point. They'll share hidden gems, local stories, and ensure an unforgettable experience. 24/7 support included.",
+      pl: "Spotkaj swojego lokalnego przewodnika w punkcie odbioru. Podzieli się ukrytymi perełkami, lokalnymi historiami i zapewni niezapomniane wrażenia. Wsparcie 24/7.",
+      is: "Hittu leiðsögumanninn þinn á afhendingarstaðnum. Hann deilir faldum perlum, staðbundnum sögum og tryggir ógleymanlega upplifun. Þjónusta 24/7.",
     },
   },
 ];
@@ -71,7 +71,6 @@ const HowItWorks = () => {
                 transition={{ delay: i * 0.15 }}
                 className="relative text-center group"
               >
-                {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute top-10 left-[60%] w-[80%] border-t border-dashed border-border/40" />
                 )}

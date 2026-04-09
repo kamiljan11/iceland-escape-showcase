@@ -60,7 +60,6 @@ const ToursSection = () => {
           <BookingModal
             open
             onClose={() => setBookingIdx(null)}
-            type="tour"
             itemIndex={bookingIdx}
             itemName={t(tr.tours.items[bookingIdx].title, lang)}
           />

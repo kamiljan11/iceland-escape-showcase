@@ -24,10 +24,9 @@ const statusColors: Record<BookingStatus, string> = {
 };
 
 const tourNames = tr.tours.items.map((t) => t.title.en);
-const carNames = tr.fleet.cars.map((c) => c.name.en);
 
-function getItemName(type: string, idx: number) {
-  return type === "tour" ? tourNames[idx] || "Tour" : carNames[idx] || "Vehicle";
+function getItemName(idx: number) {
+  return tourNames[idx] || "Tour";
 }
 
 export default function Admin() {
@@ -40,7 +39,6 @@ export default function Admin() {
   const [filter, setFilter] = useState<string>("all");
   const [blocked, setBlocked] = useState(getBlockedDates());
 
-  // Seed demo data on first visit
   useEffect(() => { seedDemoData(); }, []);
 
   useEffect(() => {
@@ -147,8 +145,7 @@ export default function Admin() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Item</TableHead>
+                    <TableHead>Tour</TableHead>
                     <TableHead>Client</TableHead>
                     <TableHead>Date</TableHead>
                     <TableHead>People</TableHead>
@@ -158,20 +155,15 @@ export default function Admin() {
                 </TableHeader>
                 <TableBody>
                   {filteredBookings.length === 0 ? (
-                    <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground py-8">No bookings</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground py-8">No bookings</TableCell></TableRow>
                   ) : filteredBookings.map((b) => (
                     <TableRow key={b.id}>
-                      <TableCell>
-                        <Badge variant="outline" className="text-xs">{b.type}</Badge>
-                      </TableCell>
-                      <TableCell className="font-medium">{getItemName(b.type, b.itemIndex)}</TableCell>
+                      <TableCell className="font-medium">{getItemName(b.itemIndex)}</TableCell>
                       <TableCell>
                         <div className="text-sm">{b.name}</div>
                         <div className="text-xs text-muted-foreground">{b.email}</div>
                       </TableCell>
-                      <TableCell className="text-sm">
-                        {b.date}{b.endDate ? ` → ${b.endDate}` : ""}
-                      </TableCell>
+                      <TableCell className="text-sm">{b.date}</TableCell>
                       <TableCell>{b.people}</TableCell>
                       <TableCell>
                         <Select value={b.status} onValueChange={(v) => handleStatusChange(b.id, v as BookingStatus)}>
@@ -208,16 +200,13 @@ export default function Admin() {
 }
 
 function BlockedDatesManager({ blocked, onRefresh }: { blocked: ReturnType<typeof getBlockedDates>; onRefresh: () => void }) {
-  const [type, setType] = useState<"tour" | "car">("tour");
   const [itemIdx, setItemIdx] = useState(0);
   const [date, setDate] = useState("");
   const [reason, setReason] = useState("");
 
-  const items = type === "tour" ? tourNames : carNames;
-
   const handleAdd = () => {
     if (!date) return;
-    addBlockedDate({ type, itemIndex: itemIdx, date, reason });
+    addBlockedDate({ type: "tour", itemIndex: itemIdx, date, reason });
     setDate("");
     setReason("");
     onRefresh();
@@ -229,21 +218,11 @@ function BlockedDatesManager({ blocked, onRefresh }: { blocked: ReturnType<typeo
         <CardHeader><CardTitle className="text-sm font-heading">Add blocked date</CardTitle></CardHeader>
         <CardContent className="flex flex-wrap gap-3 items-end">
           <div>
-            <Label className="text-xs">Type</Label>
-            <Select value={type} onValueChange={(v) => { setType(v as "tour" | "car"); setItemIdx(0); }}>
-              <SelectTrigger className="w-24"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="tour">Tour</SelectItem>
-                <SelectItem value="car">Car</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
-            <Label className="text-xs">Item</Label>
+            <Label className="text-xs">Tour</Label>
             <Select value={String(itemIdx)} onValueChange={(v) => setItemIdx(+v)}>
               <SelectTrigger className="w-40"><SelectValue /></SelectTrigger>
               <SelectContent>
-                {items.map((n, i) => <SelectItem key={i} value={String(i)}>{n}</SelectItem>)}
+                {tourNames.map((n, i) => <SelectItem key={i} value={String(i)}>{n}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
@@ -253,7 +232,7 @@ function BlockedDatesManager({ blocked, onRefresh }: { blocked: ReturnType<typeo
           </div>
           <div>
             <Label className="text-xs">Reason</Label>
-            <Input value={reason} onChange={(e) => setReason(e.target.value)} placeholder="e.g. Maintenance" className="w-40" />
+            <Input value={reason} onChange={(e) => setReason(e.target.value)} placeholder="e.g. Bad weather" className="w-40" />
           </div>
           <Button size="sm" onClick={handleAdd} disabled={!date}>
             <CalendarX className="w-4 h-4 mr-1" /> Block
@@ -265,8 +244,7 @@ function BlockedDatesManager({ blocked, onRefresh }: { blocked: ReturnType<typeo
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Type</TableHead>
-              <TableHead>Item</TableHead>
+              <TableHead>Tour</TableHead>
               <TableHead>Date</TableHead>
               <TableHead>Reason</TableHead>
               <TableHead></TableHead>
@@ -274,11 +252,10 @@ function BlockedDatesManager({ blocked, onRefresh }: { blocked: ReturnType<typeo
           </TableHeader>
           <TableBody>
             {blocked.length === 0 ? (
-              <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground py-8">No blocked dates</TableCell></TableRow>
+              <TableRow><TableCell colSpan={4} className="text-center text-muted-foreground py-8">No blocked dates</TableCell></TableRow>
             ) : blocked.map((bd) => (
               <TableRow key={bd.id}>
-                <TableCell><Badge variant="outline" className="text-xs">{bd.type}</Badge></TableCell>
-                <TableCell>{getItemName(bd.type, bd.itemIndex)}</TableCell>
+                <TableCell>{getItemName(bd.itemIndex)}</TableCell>
                 <TableCell>{bd.date}</TableCell>
                 <TableCell className="text-muted-foreground">{bd.reason}</TableCell>
                 <TableCell>
