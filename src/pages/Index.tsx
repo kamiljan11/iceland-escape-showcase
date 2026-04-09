@@ -5,6 +5,7 @@ import ToursSection from "@/components/ToursSection";
 import FleetSection from "@/components/FleetSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
+import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -16,6 +17,7 @@ const Index = () => (
       <FleetSection />
       <AboutSection />
       <ContactSection />
+      <CtaBanner />
       <Footer />
     </div>
   </LanguageProvider>
