@@ -63,6 +63,26 @@ interface Guide {
 
 const guides: Guide[] = [
   {
+    name: "Eiríkur Sigurðsson",
+    role: { en: "Founder · Lead guide", pl: "Założyciel · Główny przewodnik", is: "Stofnandi · Aðalleiðsögumaður" },
+    bio: {
+      en: "Former engineer who traded blueprints for trail maps. Still leads the toughest highland routes himself.",
+      pl: "Były inżynier, który zamienił projekty na mapy szlaków. Nadal sam prowadzi najtrudniejsze trasy na wyżynach.",
+      is: "Fyrrverandi verkfræðingur sem skipti teikningum út fyrir gönguleiðakort. Leiðir enn erfiðustu hálendisleiðirnar sjálfur.",
+    },
+    img: founderImg,
+  },
+  {
+    name: "Halla Sigurðardóttir",
+    role: { en: "Operations · Co-founder", pl: "Operacje · Współzałożycielka", is: "Rekstur · Meðstofnandi" },
+    bio: {
+      en: "Eiríkur's sister. Runs every booking, every logistics detail, and somehow remembers every guest's name.",
+      pl: "Siostra Eiríkura. Zarządza każdą rezerwacją, każdym detalem logistyki i jakoś pamięta imię każdego gościa.",
+      is: "Systir Eiríks. Sér um allar bókanir, alla flutningasmáatriði og man einhvern veginn nafn hvers gests.",
+    },
+    img: hallaImg,
+  },
+  {
     name: "Jón Árnason",
     role: { en: "Guide · Former fisherman", pl: "Przewodnik · Były rybak", is: "Leiðsögumaður · Fyrrum sjómaður" },
     bio: {
