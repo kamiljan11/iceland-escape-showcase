@@ -54,6 +54,34 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Safe area for bottom-notch devices */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Better tap highlights on mobile */
+@media (hover: none) {
+  a, button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

@@ -75,10 +75,12 @@ const Footer = () => {
             <h4 className="font-body font-semibold text-sm mb-4">{t(footerSections.contact, lang)}</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-xs font-body text-muted-foreground">
-                <Phone className="w-3.5 h-3.5 text-primary" /> +354 555 1234
+                <Phone className="w-3.5 h-3.5 text-primary" />
+                <a href="tel:+3545551234" className="hover:text-foreground transition-colors">+354 555 1234</a>
               </li>
               <li className="flex items-center gap-2 text-xs font-body text-muted-foreground">
-                <Mail className="w-3.5 h-3.5 text-primary" /> hello@nordan.is
+                <Mail className="w-3.5 h-3.5 text-primary" />
+                <a href="mailto:hello@nordan.is" className="hover:text-foreground transition-colors">hello@nordan.is</a>
               </li>
               <li className="flex items-start gap-2 text-xs font-body text-muted-foreground">
                 <MapPin className="w-3.5 h-3.5 text-primary mt-0.5" /> Laugavegur 42, 101 Reykjavík

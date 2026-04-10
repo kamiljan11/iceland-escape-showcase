@@ -12,10 +12,11 @@ import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
+import MobileCta from "@/components/MobileCta";
 
 const Index = () => (
   <LanguageProvider>
-    <div className="min-h-screen">
+    <div className="min-h-screen scroll-smooth pb-16 md:pb-0">
       <Navbar />
       <AuroraBar />
       <HeroSection />
@@ -29,6 +30,7 @@ const Index = () => (
       <ContactSection />
       <CtaBanner />
       <Footer />
+      <MobileCta />
     </div>
   </LanguageProvider>
 );
