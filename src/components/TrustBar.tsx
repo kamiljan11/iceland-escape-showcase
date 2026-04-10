@@ -42,7 +42,7 @@ const TrustBar = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex md:grid md:grid-cols-4 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
         >
           {badges.map((b, i) => {
             const Icon = b.icon;
