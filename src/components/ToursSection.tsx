@@ -86,6 +86,18 @@ const ToursSection = () => {
             itemName={t(tr.tours.items[bookingIdx].title, lang)}
           />
         )}
+
+        {detailIdx !== null && (
+          <TourDetailModal
+            open
+            onClose={() => setDetailIdx(null)}
+            tourIndex={detailIdx}
+            tourImage={images[detailIdx]}
+            price={prices[detailIdx]}
+            rating={ratings[detailIdx]}
+            onBook={() => { setDetailIdx(null); setBookingIdx(detailIdx); }}
+          />
+        )}
       </div>
     </section>
   );
