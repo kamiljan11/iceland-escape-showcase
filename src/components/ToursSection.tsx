@@ -18,6 +18,7 @@ const prices = ["16 900 ISK", "24 900 ISK", "12 900 ISK"];
 const ToursSection = () => {
   const { lang } = useLanguage();
   const [bookingIdx, setBookingIdx] = useState<number | null>(null);
+  const [detailIdx, setDetailIdx] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
