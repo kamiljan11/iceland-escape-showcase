@@ -85,7 +85,7 @@ const SeasonsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-dark">
+    <section className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4 md:mb-6">
           <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
@@ -113,7 +113,7 @@ const SeasonsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto snap-start bg-card border border-border/50 rounded-xl p-5 md:p-6 hover:border-primary/30 transition-colors group"
+                className="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto snap-start bg-card shadow-md rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow group"
               >
                 <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br ${s.colorClass} flex items-center justify-center mb-3 md:mb-4`}>
                   <Icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />

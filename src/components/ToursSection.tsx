@@ -31,13 +31,11 @@ const ToursSection = () => {
           <h2 className="font-heading text-3xl md:text-5xl font-bold">{t(tr.tours.heading, lang)}</h2>
         </motion.div>
 
-        {/* Mobile scroll nav */}
         <div className="flex md:hidden justify-end gap-2 mb-4 px-1">
-          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
-          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
+          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-white shadow-sm border border-border flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
+          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-white shadow-sm border border-border flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
         </div>
 
-        {/* Horizontal scroll on mobile, grid on desktop */}
         <div
           ref={scrollRef}
           className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
@@ -49,11 +47,11 @@ const ToursSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="flex-shrink-0 w-[80vw] md:w-auto snap-start group rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-colors"
+              className="flex-shrink-0 w-[80vw] md:w-auto snap-start group rounded-xl overflow-hidden bg-card shadow-md hover:shadow-lg transition-shadow"
             >
               <div className="relative overflow-hidden h-44 md:h-56">
                 <img src={images[i]} alt={t(tour.title, lang)} loading="lazy" width={800} height={600} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-background/80 backdrop-blur-sm text-primary font-body font-bold text-xs md:text-sm px-2.5 py-1 rounded-full">
+                <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm text-primary font-body font-bold text-xs md:text-sm px-2.5 py-1 rounded-full">
                   {prices[i]}
                 </div>
               </div>
@@ -65,7 +63,7 @@ const ToursSection = () => {
                   <span className="flex items-center gap-1"><Users className="w-3 md:w-3.5 h-3 md:h-3.5" />{t(tour.group, lang)}</span>
                   <span className="flex items-center gap-1 text-volcanic"><Star className="w-3 md:w-3.5 h-3 md:h-3.5 fill-volcanic" />{ratings[i]}</span>
                 </div>
-                <button onClick={() => setBookingIdx(i)} className="mt-4 md:mt-5 w-full py-2.5 md:py-3 rounded-lg bg-secondary text-secondary-foreground font-body font-semibold text-xs md:text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
+                <button onClick={() => setBookingIdx(i)} className="mt-4 md:mt-5 w-full py-2.5 md:py-3 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-xs md:text-sm hover:opacity-90 transition-opacity">
                   {t(tr.tours.book, lang)}
                 </button>
               </div>
