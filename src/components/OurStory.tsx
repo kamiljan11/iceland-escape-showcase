@@ -182,14 +182,14 @@ const OurStory = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-4">
-            <div className="rounded-xl overflow-hidden">
+            <div className="rounded-xl overflow-hidden film-grain">
               <img src={founderImg} alt="Eiríkur Sigurðsson, founder of Norðan Travel" loading="lazy" width={800} height={1000} className="w-full h-auto object-cover" />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-xl overflow-hidden">
+              <div className="rounded-xl overflow-hidden film-grain">
                 <img src={vanBreakdownImg} alt="Guide showing travelers a hidden black sand beach near Vík" loading="lazy" width={800} height={1000} className="w-full h-48 md:h-56 object-cover" />
               </div>
-              <div className="rounded-xl overflow-hidden">
+              <div className="rounded-xl overflow-hidden film-grain">
                 <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-48 md:h-56 object-cover" />
               </div>
             </div>
@@ -226,7 +226,7 @@ const OurStory = () => {
               transition={{ delay: i * 0.12 }}
               className="group"
             >
-              <div className="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
+              <div className="rounded-xl overflow-hidden mb-4 aspect-[4/5] film-grain">
                 <img
                   src={g.img}
                   alt={g.name}

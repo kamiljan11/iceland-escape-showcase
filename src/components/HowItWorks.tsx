@@ -84,7 +84,7 @@ const HowItWorks = () => {
                 className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center ${isReversed ? "md:direction-rtl" : ""}`}
               >
                 <div className={`${isReversed ? "md:order-2" : ""}`}>
-                  <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                  <div className="rounded-xl overflow-hidden aspect-[4/3] film-grain">
                     <img src={s.img} alt={s.imgAlt} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
                   </div>
                 </div>
