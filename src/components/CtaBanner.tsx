@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { NorthernLightsAccent } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t } from "@/i18n/translations";
 
@@ -9,6 +10,8 @@ const CtaBanner = () => {
   return (
     <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+      <NorthernLightsAccent className="absolute top-6 right-8 w-48 md:w-72 text-white" />
+      <NorthernLightsAccent className="absolute bottom-6 left-8 w-40 md:w-56 text-white rotate-180" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
         <motion.h2

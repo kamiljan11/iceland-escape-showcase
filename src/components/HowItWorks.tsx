@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
+import { CompassRose, DotTrail } from "@/components/SvgAccents";
 import vanImg from "@/assets/moment-van.jpg";
 import hotspringImg from "@/assets/moment-hotspring.jpg";
 import planningImg from "@/assets/moment-planning.jpg";
@@ -61,7 +62,11 @@ const HowItWorks = () => {
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-16">
-          <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <CompassRose className="w-8 h-8 text-primary hidden md:block" />
+            <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase font-body">{t(heading.label, lang)}</p>
+            <CompassRose className="w-8 h-8 text-primary hidden md:block" />
+          </div>
           <h2 className="font-heading text-2xl md:text-5xl font-bold max-w-3xl mx-auto">{t(heading.title, lang)}</h2>
         </motion.div>
 
@@ -83,7 +88,10 @@ const HowItWorks = () => {
                   </div>
                 </div>
                 <div className={`${isReversed ? "md:order-1" : ""}`}>
-                  <span className="text-primary/40 text-xs font-body font-bold tracking-widest">{s.num}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-primary/40 text-xs font-body font-bold tracking-widest">{s.num}</span>
+                    <DotTrail className="w-16 h-2 text-primary" />
+                  </div>
                   <h3 className="font-heading text-xl md:text-2xl font-bold mt-1 mb-3">{t(s.title, lang)}</h3>
                   <p className="text-muted-foreground text-sm md:text-base font-body leading-relaxed">{t(s.desc, lang)}</p>
                 </div>

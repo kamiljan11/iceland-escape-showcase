@@ -1,4 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import { MountainDivider } from "@/components/SvgAccents";
 import { translations as tr, t, type Lang } from "@/i18n/translations";
 import { Phone, Mail, MapPin, Shield, Clock } from "lucide-react";
 
@@ -37,6 +38,7 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-border bg-white">
+      <MountainDivider className="text-primary" />
       {/* Safety banner */}
       <div className="border-b border-border/50 py-5">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-start gap-3">
