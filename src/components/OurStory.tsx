@@ -9,7 +9,7 @@ import tourMomentImg from "@/assets/team-tour-moment.jpg";
 import guideJonImg from "@/assets/guide-jon.jpg";
 import guideFreyjaImg from "@/assets/guide-freyja.jpg";
 import guideRagnarImg from "@/assets/guide-ragnar.jpg";
-import filmFrame from "@/assets/film-frame.png";
+
 
 const story = {
   label: { en: "Our story", pl: "Nasza historia", is: "Sagan okkar" },
@@ -187,17 +187,11 @@ const OurStory = () => {
               <img src={founderImg} alt="Eiríkur Sigurðsson, founder of Norðan Travel" loading="lazy" width={800} height={1000} className="w-full h-auto object-cover" />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="relative">
-                <div className="rounded-xl overflow-hidden film-grain h-48 md:h-56">
-                  <img src={vanBreakdownImg} alt="Guide showing travelers a hidden black sand beach near Vík" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
-                </div>
-                <img src={filmFrame} alt="" className="absolute inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-multiply" />
+              <div className="rounded-lg overflow-hidden film-grain film-strip h-48 md:h-56">
+                <img src={vanBreakdownImg} alt="Guide showing travelers a hidden black sand beach near Vík" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
               </div>
-              <div className="relative">
-                <div className="rounded-xl overflow-hidden film-grain h-48 md:h-56">
-                  <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-full object-cover" />
-                </div>
-                <img src={filmFrame} alt="" className="absolute inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-multiply" />
+              <div className="rounded-lg overflow-hidden film-grain film-strip h-48 md:h-56">
+                <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>
