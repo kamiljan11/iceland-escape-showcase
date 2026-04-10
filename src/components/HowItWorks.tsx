@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
-import { Search, CalendarCheck, Mountain } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
+import vanImg from "@/assets/moment-van.jpg";
+import hotspringImg from "@/assets/moment-hotspring.jpg";
+import guideFreyjaImg from "@/assets/guide-freyja.jpg";
 
 interface Step {
-  icon: typeof Search;
+  img: string;
+  imgAlt: string;
   num: string;
   title: Record<Lang, string>;
   desc: Record<Lang, string>;
@@ -12,40 +15,43 @@ interface Step {
 
 const steps: Step[] = [
   {
-    icon: Search,
+    img: guideFreyjaImg,
+    imgAlt: "Freyja, our geologist guide, inside an ice cave",
     num: "01",
-    title: { en: "Choose your adventure", pl: "Wybierz swoją przygodę", is: "Veldu ævintýrið þitt" },
+    title: { en: "Tell us what excites you", pl: "Powiedz nam, co Cię ekscytuje", is: "Segðu okkur hvað vekur áhuga þinn" },
     desc: {
-      en: "Browse our curated tours — Golden Circle, Ice Caves, Northern Lights, South Coast and more. Filter by season, activity type, or duration.",
-      pl: "Przeglądaj nasze wycieczki — Złoty Krąg, Jaskinie Lodowe, Zorza Polarna i więcej. Filtruj po sezonie, aktywności lub czasie.",
-      is: "Skoðaðu ferðirnar okkar — Gullni hringurinn, Íshellar, Norðurljós og fleira. Síaðu eftir árstíð, tegund eða lengd.",
+      en: "Glaciers? Volcanos? Northern Lights? We'll match you with the right guide — someone who's genuinely obsessed with the thing you want to see.",
+      pl: "Lodowce? Wulkany? Zorza polarna? Doberemy Ci odpowiedniego przewodnika — kogoś, kto naprawdę pasjonuje się tym, co chcesz zobaczyć.",
+      is: "Jökla? Eldfjöll? Norðurljós? Við pörum þig við rétta leiðsögumanninn — einhvern sem er virkilega heltekinn af því sem þú vilt sjá.",
     },
   },
   {
-    icon: CalendarCheck,
+    img: vanImg,
+    imgAlt: "Laughing together in the van between stops",
     num: "02",
-    title: { en: "Book instantly", pl: "Zarezerwuj natychmiast", is: "Bókaðu samstundis" },
+    title: { en: "Jump in the van", pl: "Wskocz do vana", is: "Hoppaðu í bílinn" },
     desc: {
-      en: "Secure your spot with free cancellation up to 48 hours. No deposit needed. Small group sizes guaranteed.",
-      pl: "Zarezerwuj miejsce z darmowym anulowaniem do 48h. Bez depozytu. Gwarantowane małe grupy.",
-      is: "Tryggðu þér sæti með ókeypis afpöntun allt að 48 klst. Enginn innborgun. Litlir hópar tryggðir.",
+      en: "Small groups only. You'll ride with 6 people max, not 40. The best conversations happen between stops — and our guides know when to shut up and let Iceland speak.",
+      pl: "Tylko małe grupy. Jedziesz z max 6 osobami, nie 40. Najlepsze rozmowy toczą się między przystankami — a nasi przewodnicy wiedzą, kiedy zamilknąć i pozwolić mówić Islandii.",
+      is: "Bara litlir hópar. Þú ferðast með 6 manns hámark, ekki 40. Bestu samtölin gerast á milli stoppa — og leiðsögumennirnir okkar vita hvenær á að þegja og láta Ísland tala.",
     },
   },
   {
-    icon: Mountain,
+    img: hotspringImg,
+    imgAlt: "Group discovering a hidden hot spring",
     num: "03",
-    title: { en: "Explore Iceland", pl: "Odkrywaj Islandię", is: "Uppgötvaðu Ísland" },
+    title: { en: "Find the hidden spots", pl: "Znajdź ukryte miejsca", is: "Finndu falda staðina" },
     desc: {
-      en: "Meet your local guide at the pickup point. They'll share hidden gems, local stories, and ensure an unforgettable experience.",
-      pl: "Spotkaj swojego lokalnego przewodnika. Podzieli się ukrytymi perełkami, lokalnymi historiami i zapewni niezapomniane wrażenia.",
-      is: "Hittu leiðsögumanninn þinn á afhendingarstaðnum. Hann deilir faldum perlum og tryggir ógleymanlega upplifun.",
+      en: "Hot springs with no name. Canyons with no signs. Beaches where you're the only footprints. Our guides grew up here — they know where the real Iceland hides.",
+      pl: "Gorące źródła bez nazwy. Kaniony bez znaków. Plaże, na których jesteś jedynym śladem. Nasi przewodnicy dorastali tutaj — wiedzą, gdzie kryje się prawdziwa Islandia.",
+      is: "Heitar laugar án nafns. Gljúfur án merkja. Strendur þar sem þú ert einu fótasporin. Leiðsögumenn okkar ólust hér upp — þeir vita hvar raunverulega Ísland leynist.",
     },
   },
 ];
 
 const heading = {
   label: { en: "How it works", pl: "Jak to działa", is: "Hvernig virkar þetta" },
-  title: { en: "Three steps to your Icelandic adventure", pl: "Trzy kroki do islandzkiej przygody", is: "Þrjú skref að íslensku ævintýri" },
+  title: { en: "Not a tour. An experience with real people.", pl: "Nie wycieczka. Doświadczenie z prawdziwymi ludźmi.", is: "Ekki ferð. Upplifun með raunverulegu fólki." },
 };
 
 const HowItWorks = () => {
@@ -56,30 +62,31 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-16">
           <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">{t(heading.title, lang)}</h2>
+          <h2 className="font-heading text-2xl md:text-5xl font-bold max-w-3xl mx-auto">{t(heading.title, lang)}</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-8 max-w-5xl mx-auto">
+        <div className="space-y-12 md:space-y-20 max-w-5xl mx-auto">
           {steps.map((s, i) => {
-            const Icon = s.icon;
+            const isReversed = i % 2 === 1;
             return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="relative text-center group"
+                transition={{ delay: 0.1 }}
+                className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center ${isReversed ? "md:direction-rtl" : ""}`}
               >
-                {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-[60%] w-[80%] border-t border-dashed border-border/40" />
-                )}
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-[hsl(var(--aurora-green))] to-[hsl(var(--glacier-blue))] flex items-center justify-center mx-auto mb-4 md:mb-5 group-hover:scale-105 transition-transform">
-                  <Icon className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" />
+                <div className={`${isReversed ? "md:order-2" : ""}`}>
+                  <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                    <img src={s.img} alt={s.imgAlt} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
+                  </div>
                 </div>
-                <span className="text-primary/40 text-[10px] md:text-xs font-body font-bold tracking-widest">{s.num}</span>
-                <h3 className="font-heading text-lg md:text-xl font-bold mt-1 mb-2 md:mb-3">{t(s.title, lang)}</h3>
-                <p className="text-muted-foreground text-xs md:text-sm font-body leading-relaxed">{t(s.desc, lang)}</p>
+                <div className={`${isReversed ? "md:order-1" : ""}`}>
+                  <span className="text-primary/40 text-xs font-body font-bold tracking-widest">{s.num}</span>
+                  <h3 className="font-heading text-xl md:text-2xl font-bold mt-1 mb-3">{t(s.title, lang)}</h3>
+                  <p className="text-muted-foreground text-sm md:text-base font-body leading-relaxed">{t(s.desc, lang)}</p>
+                </div>
               </motion.div>
             );
           })}
