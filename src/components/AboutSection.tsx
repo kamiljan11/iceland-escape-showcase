@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Shield, Heart, MapPin, Headphones } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { translations as tr, t, type Lang } from "@/i18n/translations";
+import { translations as tr, t } from "@/i18n/translations";
+import tourMomentImg from "@/assets/team-tour-moment.jpg";
 
 const icons = [MapPin, Heart, Shield, Headphones];
 const values = ["1 200+", "8 500+", "12", "24/7"];
@@ -26,6 +27,16 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-16 md:py-24 bg-gradient-dark">
       <div className="container mx-auto px-4 md:px-6">
+        {/* Full-width tour moment image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-xl overflow-hidden mb-12 md:mb-16 max-w-4xl mx-auto"
+        >
+          <img src={tourMomentImg} alt="Our team with guests at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-48 md:h-80 object-cover" />
+        </motion.div>
+
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(tr.about.label, lang)}</p>
