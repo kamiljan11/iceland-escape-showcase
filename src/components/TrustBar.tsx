@@ -22,7 +22,7 @@ const badges: Badge[] = [
   },
   {
     icon: MapPin,
-    label: { en: "KEF Airport Pickup", pl: "Odbiór KEF Lotnisko", is: "Sótt á KEF" },
+    label: { en: "Hotel Pickup", pl: "Odbiór z hotelu", is: "Sótt á hótel" },
     sub: { en: "Free shuttle included", pl: "Darmowy shuttle", is: "Ókeypis rúta" },
   },
   {
@@ -36,7 +36,7 @@ const TrustBar = () => {
   const { lang } = useLanguage();
 
   return (
-    <section className="py-8 md:py-12 border-y border-border/30">
+    <section className="py-8 md:py-12 border-b border-border/50">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0 }}
@@ -55,7 +55,7 @@ const TrustBar = () => {
                 transition={{ delay: i * 0.08 }}
                 className="flex-shrink-0 snap-start flex items-center gap-3 min-w-[200px] md:min-w-0"
               >
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
                 <div>

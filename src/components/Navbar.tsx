@@ -20,9 +20,9 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/30">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50 shadow-sm">
       <div className="container mx-auto px-6 flex items-center justify-between h-16">
-        <a href="#" className="font-heading text-2xl font-bold text-gradient-aurora">
+        <a href="#" className="font-heading text-2xl font-bold text-primary">
           Norðan
         </a>
 
@@ -33,7 +33,6 @@ const Navbar = () => {
             </a>
           ))}
 
-          {/* Language switcher */}
           <div className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
@@ -64,7 +63,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <a href="#tours" className="px-5 py-2 rounded-lg bg-gradient-aurora text-sm font-body font-semibold text-primary-foreground hover:opacity-90 transition-opacity">
+          <a href="#tours" className="px-5 py-2 rounded-lg bg-primary text-sm font-body font-semibold text-primary-foreground hover:opacity-90 transition-opacity">
             {t(tr.nav.book, lang)}
           </a>
         </div>
@@ -80,7 +79,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-b border-border overflow-hidden"
+            className="md:hidden bg-white border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {links.map((l) => (
