@@ -3,7 +3,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import vanImg from "@/assets/moment-van.jpg";
 import hotspringImg from "@/assets/moment-hotspring.jpg";
-import guideFreyjaImg from "@/assets/guide-freyja.jpg";
+import planningImg from "@/assets/moment-planning.jpg";
 
 interface Step {
   img: string;
@@ -15,7 +15,7 @@ interface Step {
 
 const steps: Step[] = [
   {
-    img: guideFreyjaImg,
+    img: planningImg,
     imgAlt: "Freyja, our geologist guide, inside an ice cave",
     num: "01",
     title: { en: "Tell us what excites you", pl: "Powiedz nam, co Cię ekscytuje", is: "Segðu okkur hvað vekur áhuga þinn" },
