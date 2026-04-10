@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { MountainDivider, LeafAccent } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import founderImg from "@/assets/founder-eirikur.jpg";
@@ -130,6 +131,7 @@ const OurStory = () => {
 
   return (
     <section id="story" className="py-16 md:py-28">
+      <MountainDivider className="text-primary mb-8 md:mb-12" />
       <div className="container mx-auto px-4 md:px-6">
         {/* Founder story with photo */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-28">
@@ -176,8 +178,9 @@ const OurStory = () => {
         <div className="grid md:grid-cols-3 gap-6 md:gap-10 max-w-5xl mx-auto mb-20 md:mb-28">
           {differentiators.map((d, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="bg-card shadow-sm rounded-xl p-5 md:p-6">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 md:mb-4">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 md:mb-4 relative">
                 <span className="font-heading text-primary font-bold text-sm md:text-base">{String(i + 1).padStart(2, "0")}</span>
+                <LeafAccent className="w-5 h-5 text-primary absolute -top-1 -right-1" />
               </div>
               <h3 className="font-heading text-base md:text-lg font-bold mb-2">{t(d.title, lang)}</h3>
               <p className="text-muted-foreground text-xs md:text-sm font-body leading-relaxed">{t(d.desc, lang)}</p>
