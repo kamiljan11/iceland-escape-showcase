@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { WindLines } from "@/components/SvgAccents";
+import { WindLines, DotFieldBg } from "@/components/SvgAccents";
 import { motion } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -69,7 +69,8 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 relative">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <DotFieldBg className="text-foreground" />
       <WindLines className="w-32 md:w-48 text-primary absolute top-8 left-8 hidden md:block" />
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-16">

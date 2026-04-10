@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MountainDivider, LeafAccent } from "@/components/SvgAccents";
+import { MountainDivider, LeafAccent, TopoBg } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import founderImg from "@/assets/founder-eirikur.jpg";
@@ -130,7 +130,8 @@ const OurStory = () => {
   const { lang } = useLanguage();
 
   return (
-    <section id="story" className="py-16 md:py-28">
+    <section id="story" className="py-16 md:py-28 relative overflow-hidden">
+      <TopoBg className="text-primary" />
       <MountainDivider className="text-primary mb-8 md:mb-12" />
       <div className="container mx-auto px-4 md:px-6">
         {/* Founder story with photo */}
