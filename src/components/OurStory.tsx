@@ -80,7 +80,7 @@ const guides: Guide[] = [
       pl: "Siostra Eiríkura. Zarządza każdą rezerwacją, każdym detalem logistyki i jakoś pamięta imię każdego gościa.",
       is: "Systir Eiríks. Sér um allar bókanir, alla flutningasmáatriði og man einhvern veginn nafn hvers gests.",
     },
-    img: hallaImg,
+    img: "/assets/team-halla.jpg",
   },
   {
     name: "Jón Árnason",
