@@ -10,6 +10,12 @@ import BookingModal from "@/components/BookingModal";
 import TourDetailModal from "@/components/TourDetailModal";
 
 const viewDetailsLabel = { en: "View details", pl: "Zobacz szczegóły", is: "Sjá nánar" };
+const customTripLine = {
+  en: "Don't see your dream trip? We build custom ones too.",
+  pl: "Nie widzisz wymarzonej wycieczki? Tworzymy też na zamówienie.",
+  is: "Sérðu ekki draumaferðina þína? Við smíðum líka sérsniðnar.",
+};
+const customTripCta = { en: "Let's plan yours", pl: "Zaplanujmy Twoją", is: "Skipuleggjum þína" };
 
 const images = [goldenCircle, iceCave, northernLights];
 const ratings = ["4.9", "5.0", "4.9"];
@@ -33,6 +39,13 @@ const ToursSection = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-16">
           <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(tr.tours.label, lang)}</p>
           <h2 className="font-heading text-3xl md:text-5xl font-bold">{t(tr.tours.heading, lang)}</h2>
+          <p className="text-muted-foreground font-body text-sm md:text-base mt-3 max-w-xl mx-auto">
+            {t(customTripLine, lang)}
+            {" "}
+            <a href="#contact" className="text-primary font-semibold hover:underline">
+              {t(customTripCta, lang)} →
+            </a>
+          </p>
         </motion.div>
 
         <div className="flex md:hidden justify-end gap-2 mb-4 px-1">
