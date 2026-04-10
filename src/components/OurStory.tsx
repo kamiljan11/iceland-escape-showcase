@@ -3,6 +3,7 @@ import { MountainDivider, LeafAccent, TopoBg } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import founderImg from "@/assets/founder-eirikur.jpg";
+import vanBreakdownImg from "@/assets/story-van-breakdown.jpg";
 import hallaImg from "@/assets/team-halla.jpg";
 import tourMomentImg from "@/assets/team-tour-moment.jpg";
 import guideJonImg from "@/assets/guide-jon.jpg";
@@ -186,7 +187,7 @@ const OurStory = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-xl overflow-hidden">
-                <img src={hallaImg} alt="Halla Sigurðardóttir managing bookings" loading="lazy" width={800} height={1000} className="w-full h-48 md:h-56 object-cover" />
+                <img src={vanBreakdownImg} alt="The original van that broke down on Route 1 near Vík" loading="lazy" width={800} height={1000} className="w-full h-48 md:h-56 object-cover" />
               </div>
               <div className="rounded-xl overflow-hidden">
                 <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-48 md:h-56 object-cover" />
