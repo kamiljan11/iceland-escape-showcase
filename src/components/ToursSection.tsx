@@ -10,6 +10,12 @@ import BookingModal from "@/components/BookingModal";
 import TourDetailModal from "@/components/TourDetailModal";
 
 const viewDetailsLabel = { en: "View details", pl: "Zobacz szczegóły", is: "Sjá nánar" };
+const customTripLine = {
+  en: "Don't see your dream trip? We build custom ones too.",
+  pl: "Nie widzisz wymarzonej wycieczki? Tworzymy też na zamówienie.",
+  is: "Sérðu ekki draumaferðina þína? Við smíðum líka sérsniðnar.",
+};
+const customTripCta = { en: "Let's plan yours", pl: "Zaplanujmy Twoją", is: "Skipuleggjum þína" };
 
 const images = [goldenCircle, iceCave, northernLights];
 const ratings = ["4.9", "5.0", "4.9"];
