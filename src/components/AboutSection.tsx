@@ -1,10 +1,23 @@
 import { motion } from "framer-motion";
 import { Shield, Heart, MapPin, Headphones } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { translations as tr, t } from "@/i18n/translations";
+import { translations as tr, t, type Lang } from "@/i18n/translations";
 
 const icons = [MapPin, Heart, Shield, Headphones];
 const values = ["1 200+", "8 500+", "12", "24/7"];
+
+const aboutContent = {
+  p1: {
+    en: "We started with one van and a philosophy: show people the Iceland that locals love, not the one tour buses visit. Twelve years later, the vans are newer, but the philosophy hasn't changed.",
+    pl: "Zaczęliśmy od jednego vana i filozofii: pokazywać ludziom Islandię, którą kochają lokalni, a nie tę, którą odwiedzają turystyczne autobusy. Dwanaście lat później, vany są nowsze, ale filozofia się nie zmieniła.",
+    is: "Við byrjuðum með einn sendibíl og heimspeki: sýna fólki Íslandið sem heimamenn elska, ekki það sem túristarúturnar heimsækja. Tólf árum síðar eru bílarnir nýrri, en heimspekin er sú sama.",
+  },
+  p2: {
+    en: "Every guide on our team lives in Iceland year-round. They're not seasonal hires reading from a script — they're neighbours, friends, and storytellers who happen to know where the hidden hot springs are.",
+    pl: "Każdy przewodnik w naszym zespole mieszka na Islandii cały rok. To nie sezonowi pracownicy czytający ze skryptu — to sąsiedzi, przyjaciele i gawędziarze, którzy przypadkiem wiedzą, gdzie są ukryte gorące źródła.",
+    is: "Allir leiðsögumenn okkar búa á Íslandi allt árið. Þeir eru ekki árstíðabundnir ráðningar sem lesa af handriti — þeir eru nágrannar, vinir og sögumenn sem vita hvar faldu heitu laugarnar eru.",
+  },
+};
 
 const AboutSection = () => {
   const { lang } = useLanguage();
@@ -17,8 +30,8 @@ const AboutSection = () => {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(tr.about.label, lang)}</p>
             <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4 md:mb-6">{t(tr.about.heading, lang)}</h2>
-            <p className="text-muted-foreground font-body text-sm md:text-base leading-relaxed mb-3 md:mb-4">{t(tr.about.p1, lang)}</p>
-            <p className="text-muted-foreground font-body text-sm md:text-base leading-relaxed">{t(tr.about.p2, lang)}</p>
+            <p className="text-muted-foreground font-body text-sm md:text-base leading-relaxed mb-3 md:mb-4">{t(aboutContent.p1, lang)}</p>
+            <p className="text-muted-foreground font-body text-sm md:text-base leading-relaxed">{t(aboutContent.p2, lang)}</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-3 md:gap-4">
