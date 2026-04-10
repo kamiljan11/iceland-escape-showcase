@@ -9,6 +9,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { t, Lang } from "@/i18n/translations";
 import { addBooking, isDateBlocked } from "@/lib/store";
 import { CalendarCheck, CheckCircle2 } from "lucide-react";
+import DemoNotice from "@/components/DemoNotice";
 
 const labels: Record<string, Record<Lang, string>> = {
   title: { en: "Book tour", pl: "Zarezerwuj wycieczkę", is: "Bóka ferð" },
@@ -42,6 +43,7 @@ export default function BookingModal({ open, onClose, itemIndex, itemName }: Pro
   const [people, setPeople] = useState(1);
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
+  const [showDemo, setShowDemo] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +63,7 @@ export default function BookingModal({ open, onClose, itemIndex, itemName }: Pro
       people,
       notes,
     });
-    setStep("success");
+    setShowDemo(true);
   };
 
   const handleClose = () => {
@@ -146,6 +148,7 @@ export default function BookingModal({ open, onClose, itemIndex, itemName }: Pro
           </>
         )}
       </DialogContent>
+      <DemoNotice open={showDemo} onClose={() => { setShowDemo(false); handleClose(); }} />
     </Dialog>
   );
 }
