@@ -3,15 +3,15 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as tr, t } from "@/i18n/translations";
+import DemoNotice from "@/components/DemoNotice";
 
 const ContactSection = () => {
-  const [sent, setSent] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
   const { lang } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setShowDemo(true);
   };
 
   return (
@@ -64,11 +64,12 @@ const ContactSection = () => {
             </select>
             <textarea placeholder={t(tr.contact.message, lang)} rows={3} required className="w-full bg-secondary border border-border rounded-lg px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" />
             <button type="submit" className="w-full py-2.5 md:py-3 rounded-lg bg-gradient-aurora text-primary-foreground font-body font-semibold text-xs md:text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-              {sent ? t(tr.contact.sent, lang) : <><Send className="w-3.5 md:w-4 h-3.5 md:h-4" />{t(tr.contact.send, lang)}</>}
+              <Send className="w-3.5 md:w-4 h-3.5 md:h-4" />{t(tr.contact.send, lang)}
             </button>
           </motion.form>
         </div>
       </div>
+      <DemoNotice open={showDemo} onClose={() => setShowDemo(false)} />
     </section>
   );
 };
