@@ -35,14 +35,14 @@ const ContactSection = () => {
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" /></div>
               <div>
                 <h4 className="font-body font-semibold text-xs md:text-sm mb-1">{t(tr.contact.phone, lang)}</h4>
-                <p className="text-muted-foreground text-xs md:text-sm font-body">+354 555 1234</p>
+                <a href="tel:+3545551234" className="text-muted-foreground text-xs md:text-sm font-body hover:text-foreground transition-colors">+354 555 1234</a>
               </div>
             </div>
             <div className="flex items-start gap-3 md:gap-4">
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" /></div>
               <div>
                 <h4 className="font-body font-semibold text-xs md:text-sm mb-1">{t(tr.contact.email, lang)}</h4>
-                <p className="text-muted-foreground text-xs md:text-sm font-body">info@nordantravel.is</p>
+                <a href="mailto:info@nordantravel.is" className="text-muted-foreground text-xs md:text-sm font-body hover:text-foreground transition-colors">info@nordantravel.is</a>
               </div>
             </div>
             <div className="mt-6 md:mt-8 rounded-xl overflow-hidden shadow-md h-36 md:h-48">
