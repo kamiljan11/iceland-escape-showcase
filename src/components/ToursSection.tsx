@@ -9,8 +9,8 @@ import { translations as tr, t } from "@/i18n/translations";
 import BookingModal from "@/components/BookingModal";
 
 const images = [goldenCircle, iceCave, northernLights];
-const ratings = ["4.9", "5.0", "4.8"];
-const prices = ["12 900 ISK", "19 900 ISK", "9 900 ISK"];
+const ratings = ["4.9", "5.0", "4.9"];
+const prices = ["16 900 ISK", "24 900 ISK", "12 900 ISK"];
 
 const ToursSection = () => {
   const { lang } = useLanguage();
