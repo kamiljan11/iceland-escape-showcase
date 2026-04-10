@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
-import { CompassRose, DotTrail } from "@/components/SvgAccents";
+import { CompassRose, DotTrail, DotFieldBg } from "@/components/SvgAccents";
 import vanImg from "@/assets/moment-van.jpg";
 import hotspringImg from "@/assets/moment-hotspring.jpg";
 import planningImg from "@/assets/moment-planning.jpg";
@@ -59,7 +59,8 @@ const HowItWorks = () => {
   const { lang } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <DotFieldBg className="text-primary" />
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Sun, Snowflake, Leaf, Flower2, ChevronLeft, ChevronRight } from "lucide-react";
+import { TopoBg } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 
@@ -85,7 +86,8 @@ const SeasonsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <TopoBg className="text-muted-foreground" />
       <div className="container mx-auto px-4 md:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4 md:mb-6">
           <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { WaveDivider } from "@/components/SvgAccents";
+import { WaveDivider, GlacierCracksBg } from "@/components/SvgAccents";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import {
@@ -74,8 +74,9 @@ const FaqSection = () => {
   const { lang } = useLanguage();
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-gradient-dark">
-      <WaveDivider className="text-primary -mt-4 mb-6" />
+    <section id="faq" className="py-16 md:py-24 bg-gradient-dark relative overflow-hidden">
+      <GlacierCracksBg className="text-primary" />
+      <WaveDivider className="text-primary -mt-4 mb-6 relative z-[1]" />
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-14">
           <p className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3 font-body">{t(heading.label, lang)}</p>
