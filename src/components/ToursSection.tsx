@@ -1,12 +1,15 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Clock, Users, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Clock, Users, Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import goldenCircle from "@/assets/tour-golden-circle.jpg";
 import iceCave from "@/assets/tour-ice-cave.jpg";
 import northernLights from "@/assets/tour-northern-lights.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as tr, t } from "@/i18n/translations";
 import BookingModal from "@/components/BookingModal";
+import TourDetailModal from "@/components/TourDetailModal";
+
+const viewDetailsLabel = { en: "View details", pl: "Zobacz szczegóły", is: "Sjá nánar" };
 
 const images = [goldenCircle, iceCave, northernLights];
 const ratings = ["4.9", "5.0", "4.9"];
@@ -15,6 +18,7 @@ const prices = ["16 900 ISK", "24 900 ISK", "12 900 ISK"];
 const ToursSection = () => {
   const { lang } = useLanguage();
   const [bookingIdx, setBookingIdx] = useState<number | null>(null);
+  const [detailIdx, setDetailIdx] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -58,6 +62,9 @@ const ToursSection = () => {
               <div className="p-4 md:p-6">
                 <h3 className="font-heading text-lg md:text-xl font-bold mb-1.5 md:mb-2">{t(tour.title, lang)}</h3>
                 <p className="text-muted-foreground text-xs md:text-sm font-body mb-3 md:mb-4 line-clamp-2">{t(tour.desc, lang)}</p>
+                <button onClick={() => setDetailIdx(i)} className="text-primary text-xs md:text-sm font-body font-semibold mb-3 md:mb-4 flex items-center gap-1 hover:underline">
+                  {t(viewDetailsLabel, lang)} <ArrowRight className="w-3 h-3" />
+                </button>
                 <div className="flex items-center gap-3 md:gap-4 text-[11px] md:text-xs text-muted-foreground font-body">
                   <span className="flex items-center gap-1"><Clock className="w-3 md:w-3.5 h-3 md:h-3.5" />{t(tour.duration, lang)}</span>
                   <span className="flex items-center gap-1"><Users className="w-3 md:w-3.5 h-3 md:h-3.5" />{t(tour.group, lang)}</span>
@@ -77,6 +84,18 @@ const ToursSection = () => {
             onClose={() => setBookingIdx(null)}
             itemIndex={bookingIdx}
             itemName={t(tr.tours.items[bookingIdx].title, lang)}
+          />
+        )}
+
+        {detailIdx !== null && (
+          <TourDetailModal
+            open
+            onClose={() => setDetailIdx(null)}
+            tourIndex={detailIdx}
+            tourImage={images[detailIdx]}
+            price={prices[detailIdx]}
+            rating={ratings[detailIdx]}
+            onBook={() => { setDetailIdx(null); setBookingIdx(detailIdx); }}
           />
         )}
       </div>
