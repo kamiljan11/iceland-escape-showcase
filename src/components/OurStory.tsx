@@ -187,11 +187,15 @@ const OurStory = () => {
               <img src={founderImg} alt="Eiríkur Sigurðsson, founder of Norðan Travel" loading="lazy" width={800} height={1000} className="w-full h-auto object-cover" />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-lg overflow-hidden film-grain film-strip h-48 md:h-56">
-                <img src={vanBreakdownImg} alt="Guide showing travelers a hidden black sand beach near Vík" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
+              <div className="relative rounded-lg film-strip">
+                <div className="overflow-hidden rounded-lg film-grain h-48 md:h-56">
+                  <img src={vanBreakdownImg} alt="Guide showing travelers a hidden black sand beach near Vík" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
+                </div>
               </div>
-              <div className="rounded-lg overflow-hidden film-grain film-strip h-48 md:h-56">
-                <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-full object-cover" />
+              <div className="relative rounded-lg film-strip">
+                <div className="overflow-hidden rounded-lg film-grain h-48 md:h-56">
+                  <img src={tourMomentImg} alt="A group tour moment at a waterfall" loading="lazy" width={1200} height={800} className="w-full h-full object-cover" />
+                </div>
               </div>
             </div>
           </motion.div>
