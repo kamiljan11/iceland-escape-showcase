@@ -62,6 +62,9 @@ const ToursSection = () => {
               <div className="p-4 md:p-6">
                 <h3 className="font-heading text-lg md:text-xl font-bold mb-1.5 md:mb-2">{t(tour.title, lang)}</h3>
                 <p className="text-muted-foreground text-xs md:text-sm font-body mb-3 md:mb-4 line-clamp-2">{t(tour.desc, lang)}</p>
+                <button onClick={() => setDetailIdx(i)} className="text-primary text-xs md:text-sm font-body font-semibold mb-3 md:mb-4 flex items-center gap-1 hover:underline">
+                  {t(viewDetailsLabel, lang)} <ArrowRight className="w-3 h-3" />
+                </button>
                 <div className="flex items-center gap-3 md:gap-4 text-[11px] md:text-xs text-muted-foreground font-body">
                   <span className="flex items-center gap-1"><Clock className="w-3 md:w-3.5 h-3 md:h-3.5" />{t(tour.duration, lang)}</span>
                   <span className="flex items-center gap-1"><Users className="w-3 md:w-3.5 h-3 md:h-3.5" />{t(tour.group, lang)}</span>
