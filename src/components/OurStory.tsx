@@ -4,6 +4,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { t, type Lang } from "@/i18n/translations";
 import founderImg from "@/assets/founder-eirikur.jpg";
 import vanBreakdownImg from "@/assets/story-van-breakdown.jpg";
+import hallaImg from "@/assets/team-halla.jpg";
 import tourMomentImg from "@/assets/team-tour-moment.jpg";
 import guideJonImg from "@/assets/guide-jon.jpg";
 import guideFreyjaImg from "@/assets/guide-freyja.jpg";
@@ -80,7 +81,7 @@ const guides: Guide[] = [
       pl: "Siostra Eiríkura. Zarządza każdą rezerwacją, każdym detalem logistyki i jakoś pamięta imię każdego gościa.",
       is: "Systir Eiríks. Sér um allar bókanir, alla flutningasmáatriði og man einhvern veginn nafn hvers gests.",
     },
-    img: "/assets/team-halla.jpg",
+    img: hallaImg,
   },
   {
     name: "Jón Árnason",
