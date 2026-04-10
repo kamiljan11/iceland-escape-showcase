@@ -19,8 +19,8 @@ const reviews: Review[] = [
     country: { en: "United Kingdom", pl: "Wielka Brytania", is: "Bretland" },
     text: {
       en: "Our guide Jón took us to a geothermal pool that wasn't on any map. We sat in hot water surrounded by snow while he told us about the volcano underneath. No big tour company would ever take you there.",
-      pl: "Nasz przewodnik Jón zabrał nas do geotermalnego basenu, którego nie było na żadnej mapie. Siedzieliśmy w gorącej wodzie otoczeni śniegiem, gdy opowiadał o wulkanie pod nami. Żadna duża firma turystyczna nigdy by was tam nie zabrała.",
-      is: "Leiðsögumaðurinn okkar Jón fór með okkur í jarðhitalaug sem var ekki á neinu korti. Við sátum í heitu vatni umkringd snjó á meðan hann sagði okkur frá eldfjallinu undir. Ekkert stórt ferðaskrifstofa myndi nokkurn tíma fara þangað.",
+      pl: "Nasz przewodnik Jón zabrał nas do geotermalnego basenu, którego nie było na żadnej mapie. Siedzieliśmy w gorącej wodzie otoczeni śniegiem, gdy opowiadał o wulkanie pod nami.",
+      is: "Leiðsögumaðurinn okkar Jón fór með okkur í jarðhitalaug sem var ekki á neinu korti.",
     },
     rating: 5,
     tour: "Golden Circle",
@@ -31,8 +31,8 @@ const reviews: Review[] = [
     country: { en: "Sweden", pl: "Szwecja", is: "Svíþjóð" },
     text: {
       en: "We were only 6 people in the group. Felt like a private tour. Our guide was a marine biologist who moved to Iceland 20 years ago — his stories about the coast were better than any documentary.",
-      pl: "W grupie było nas tylko 6 osób. Czuło się jak prywatna wycieczka. Nasz przewodnik był biologiem morskim, który przeprowadził się na Islandię 20 lat temu — jego historie o wybrzeżu były lepsze niż jakikolwiek dokument.",
-      is: "Við vorum aðeins 6 í hópnum. Leið eins og einkaferð. Leiðsögumaðurinn okkar var sjávarlíffræðingur sem flutti til Íslands fyrir 20 árum — sögur hans um ströndina voru betri en nokkur heimildarmynd.",
+      pl: "W grupie było nas tylko 6 osób. Czuło się jak prywatna wycieczka. Nasz przewodnik był biologiem morskim.",
+      is: "Við vorum aðeins 6 í hópnum. Leið eins og einkaferð.",
     },
     rating: 5,
     tour: "South Coast",
@@ -43,8 +43,8 @@ const reviews: Review[] = [
     country: { en: "Japan", pl: "Japonia", is: "Japan" },
     text: {
       en: "The Northern Lights didn't show up the first night. Instead of giving up, our guide drove us to a canyon she knew — pitch dark, no one else around. When the lights finally appeared, we were the only people watching. I cried.",
-      pl: "Zorza polarna nie pojawiła się pierwszej nocy. Zamiast się poddać, nasza przewodniczka zawiozła nas do kanionu — kompletna ciemność, nikogo w pobliżu. Gdy światła w końcu się pojawiły, byliśmy jedynymi obserwatorami. Płakałam.",
-      is: "Norðurljósin komu ekki fyrstu nóttina. Í stað þess að gefast upp ók leiðsögukonan okkar með okkur í gljúfur — kolsvart, enginn annar í kring. Þegar ljósin loks birtust vorum við einu sem horfðu. Ég grét.",
+      pl: "Zorza polarna nie pojawiła się pierwszej nocy. Zamiast się poddać, nasza przewodniczka zawiozła nas do kanionu. Gdy światła w końcu się pojawiły, byliśmy jedynymi obserwatorami. Płakałam.",
+      is: "Norðurljósin komu ekki fyrstu nóttina. Þegar ljósin loks birtust vorum við einu sem horfðu. Ég grét.",
     },
     rating: 5,
     tour: "Northern Lights",
@@ -76,8 +76,8 @@ const TestimonialsSection = () => {
         </motion.div>
 
         <div className="flex md:hidden justify-end gap-2 mb-4 px-1">
-          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
-          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
+          <button onClick={() => scroll("left")} className="w-8 h-8 rounded-full bg-white shadow-sm border border-border flex items-center justify-center text-muted-foreground"><ChevronLeft className="w-4 h-4" /></button>
+          <button onClick={() => scroll("right")} className="w-8 h-8 rounded-full bg-white shadow-sm border border-border flex items-center justify-center text-muted-foreground"><ChevronRight className="w-4 h-4" /></button>
         </div>
 
         <div
@@ -91,10 +91,10 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              className="flex-shrink-0 w-[82vw] md:w-auto snap-start bg-card border border-border/50 rounded-xl p-5 md:p-6 flex flex-col"
+              className="flex-shrink-0 w-[82vw] md:w-auto snap-start bg-card shadow-md rounded-xl p-5 md:p-6 flex flex-col"
             >
               <Quote className="w-6 h-6 md:w-8 md:h-8 text-primary/30 mb-3 md:mb-4" />
-              <p className="text-secondary-foreground text-xs md:text-sm font-body leading-relaxed flex-1 mb-4 md:mb-5">
+              <p className="text-foreground/80 text-xs md:text-sm font-body leading-relaxed flex-1 mb-4 md:mb-5">
                 "{t(r.text, lang)}"
               </p>
               <div className="flex items-center gap-1 mb-3 md:mb-4">
@@ -102,8 +102,8 @@ const TestimonialsSection = () => {
                   <Star key={j} className="w-3.5 md:w-4 h-3.5 md:h-4 fill-volcanic text-volcanic" />
                 ))}
               </div>
-              <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-border/30">
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-aurora flex items-center justify-center text-primary-foreground font-body font-bold text-xs md:text-sm">
+              <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-border/50">
+                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-body font-bold text-xs md:text-sm">
                   {r.avatar}
                 </div>
                 <div>
