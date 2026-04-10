@@ -221,7 +221,7 @@ const OurStory = () => {
           <h2 className="font-heading text-2xl md:text-4xl font-bold">{t(teamHeading, lang)}</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
           {guides.map((g, i) => (
             <motion.div
               key={i}
@@ -241,9 +241,9 @@ const OurStory = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <h3 className="font-heading text-base md:text-lg font-bold">{g.name}</h3>
-              <p className="text-primary font-body text-xs md:text-sm mb-2">{t(g.role, lang)}</p>
-              <p className="text-muted-foreground text-xs md:text-sm font-body leading-relaxed">{t(g.bio, lang)}</p>
+              <h3 className="font-heading text-sm md:text-lg font-bold">{g.name}</h3>
+              <p className="text-primary font-body text-[11px] md:text-sm mb-1 md:mb-2">{t(g.role, lang)}</p>
+              <p className="text-muted-foreground text-[11px] md:text-sm font-body leading-relaxed hidden sm:block">{t(g.bio, lang)}</p>
             </motion.div>
           ))}
         </div>
