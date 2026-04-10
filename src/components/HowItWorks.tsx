@@ -15,7 +15,7 @@ interface Step {
 
 const steps: Step[] = [
   {
-    img: guideFreyjaImg,
+    img: planningImg,
     imgAlt: "Freyja, our geologist guide, inside an ice cave",
     num: "01",
     title: { en: "Tell us what excites you", pl: "Powiedz nam, co Cię ekscytuje", is: "Segðu okkur hvað vekur áhuga þinn" },
