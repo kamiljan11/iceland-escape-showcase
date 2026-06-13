@@ -98,7 +98,8 @@ const Footer = () => {
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <a href="#" className="font-heading text-xl font-bold text-primary">Norðan Travel</a>
           <p className="text-muted-foreground/60 text-[10px] font-body text-center md:text-left">
-            {t(footerSections.registration, lang)}
+            {t(footerSections.registration, lang)}{" · "}built by{" "}
+            <a href="https://kamiljan.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Kamil Jan</a>
           </p>
           <div className="flex gap-5 text-xs text-muted-foreground font-body">
             <a href="#" className="hover:text-foreground transition-colors">{t(tr.footer.terms, lang)}</a>
