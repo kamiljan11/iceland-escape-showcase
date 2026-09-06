@@ -43,6 +43,12 @@ npm run build
 npx playwright test
 ```
 
+## Deploy
+
+Ships through **Lovable Publish** (manual, from the Lovable dashboard). Pushing to `main`
+syncs the code into the Lovable editor; it does not by itself put anything live — publishing
+the public URL is a separate, deliberate step. There is no auto-deploy GitHub Action.
+
 ## How security is handled
 
 Nothing sensitive lives here by design: no backend, no database, no keys, no real personal
@@ -53,4 +59,4 @@ where standards quietly slip, so it does not get an exemption.
 
 ## Licence
 
-Proprietary. Published for reference, not for reuse.
+Proprietary — all rights reserved. See [LICENSE](./LICENSE).
