@@ -23,7 +23,6 @@ and photos are placeholders.
 - Tour catalogue (Golden Circle, ice caves, northern lights, custom trips)
 - Small-group positioning carried through the copy and layout
 - Enquiry and custom-tour request flow
-- Simple admin view
 
 ## Stack
 

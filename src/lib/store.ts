@@ -1,4 +1,8 @@
-// Simulated backend using localStorage
+// Simulated backend using localStorage.
+//
+// This is a front-end showcase: there is no server, no account and no login anywhere in
+// the app. Enquiries are kept in the visitor's own browser so the form can behave like a
+// real one during a demo, and they never leave the machine.
 
 export type BookingType = "tour";
 export type BookingStatus = "new" | "confirmed" | "completed" | "cancelled";
@@ -27,10 +31,6 @@ export interface BlockedDate {
 
 const BOOKINGS_KEY = "nordan_bookings";
 const BLOCKED_KEY = "nordan_blocked";
-const ADMIN_KEY = "nordan_admin_auth";
-
-const ADMIN_EMAIL = "admin@nordan.is";
-const ADMIN_PASS = "nordan2024";
 
 function genId(): string {
   return Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
@@ -54,63 +54,14 @@ export function addBooking(b: Omit<Booking, "id" | "status" | "createdAt">): Boo
   return booking;
 }
 
-export function updateBookingStatus(id: string, status: BookingStatus) {
-  const all = getBookings();
-  const idx = all.findIndex((b) => b.id === id);
-  if (idx >= 0) { all[idx].status = status; saveBookings(all); }
-}
-
-export function deleteBooking(id: string) {
-  saveBookings(getBookings().filter((b) => b.id !== id));
-}
-
+// Nothing in the app writes blocked dates — seed the "nordan_blocked" key by hand when a
+// demo needs to show the "date unavailable" message.
 export function getBlockedDates(): BlockedDate[] {
   try {
     return JSON.parse(localStorage.getItem(BLOCKED_KEY) || "[]");
   } catch { return []; }
 }
 
-export function addBlockedDate(bd: Omit<BlockedDate, "id">): BlockedDate {
-  const item: BlockedDate = { ...bd, id: genId() };
-  const all = getBlockedDates();
-  all.push(item);
-  localStorage.setItem(BLOCKED_KEY, JSON.stringify(all));
-  return item;
-}
-
-export function removeBlockedDate(id: string) {
-  localStorage.setItem(BLOCKED_KEY, JSON.stringify(getBlockedDates().filter((b) => b.id !== id)));
-}
-
 export function isDateBlocked(type: BookingType, itemIndex: number, date: string): boolean {
   return getBlockedDates().some((b) => b.type === type && b.itemIndex === itemIndex && b.date === date);
-}
-
-export function adminLogin(email: string, password: string): boolean {
-  if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
-    localStorage.setItem(ADMIN_KEY, "true");
-    return true;
-  }
-  return false;
-}
-
-export function isAdminLoggedIn(): boolean {
-  return localStorage.getItem(ADMIN_KEY) === "true";
-}
-
-export function adminLogout() {
-  localStorage.removeItem(ADMIN_KEY);
-}
-
-export function seedDemoData() {
-  if (getBookings().length > 0) return;
-  const now = new Date();
-  const demoBookings: Omit<Booking, "id" | "status" | "createdAt">[] = [
-    { type: "tour", itemIndex: 0, date: new Date(now.getTime() + 3 * 86400000).toISOString().split("T")[0], name: "John Smith", email: "john@example.com", phone: "+354 555 1234", people: 4, notes: "Anniversary trip" },
-    { type: "tour", itemIndex: 1, date: new Date(now.getTime() + 5 * 86400000).toISOString().split("T")[0], name: "Anna Kowalska", email: "anna@example.com", phone: "+48 600 123 456", people: 2, notes: "" },
-    { type: "tour", itemIndex: 2, date: new Date(now.getTime() + 7 * 86400000).toISOString().split("T")[0], name: "Yuki Tanaka", email: "yuki@example.jp", phone: "+81 90 1234 5678", people: 3, notes: "Camera equipment" },
-  ];
-  demoBookings.forEach((b) => addBooking(b));
-  const all = getBookings();
-  if (all[0]) updateBookingStatus(all[0].id, "confirmed");
 }
