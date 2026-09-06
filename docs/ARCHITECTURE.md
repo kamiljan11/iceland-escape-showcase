@@ -6,8 +6,8 @@
 Demo site "Norðan Travel" — **fikcyjny** operator małogrupowych wycieczek po Islandii (max 8 osób,
 lokalni przewodnicy), zbudowany jako pokazowy przykład dla klientów agencji
 [Reykjawwwik](https://reykjawwwik.is). Pozycjonowanie: przeciwieństwo autokarowych wycieczek
-masowych. Zero prawdziwych klientów/rezerwacji/płatności — jedyny wyjątek to prosty panel
-`/admin` symulujący backend przez `localStorage`, pokazujący klientowi "jak to może wyglądać".
+masowych. Zero prawdziwych klientów/rezerwacji/płatności i **zero logowania** — to wyłącznie
+front, a zapytanie z formularza ląduje w `localStorage` przeglądarki odwiedzającego.
 
 ## Stack (z package.json / README)
 - Frontend: React + TypeScript, Vite, react-router-dom (3 trasy), TanStack Query (bez realnych zapytań)
@@ -22,8 +22,7 @@ masowych. Zero prawdziwych klientów/rezerwacji/płatności — jedyny wyjątek 
 | Katalog / plik | Odpowiedzialność | Tier |
 |---|---|---|
 | `src/pages/Index.tsx` | strona główna one-page (Hero, ToursSection, OurStory, Testimonials, FAQ, Contact) | T1 |
-| `src/pages/Admin.tsx` | panel demo: logowanie (`adminLogin`), lista rezerwacji, blokada dat | T1 |
-| `src/lib/store.ts` | **cały "backend"** — CRUD na `localStorage` (`Booking`, `BlockedDate`), stałe dane logowania admina wpisane w kodzie (`ADMIN_EMAIL`/`ADMIN_PASS`) — WYŁĄCZNIE do celów demo, nigdy nie kopiować tego wzorca do produkcji | T1 |
+| `src/lib/store.ts` | **cały "backend"** — zapis zapytania do `localStorage` (`addBooking`) i odczyt zablokowanych terminów (`isDateBlocked`). Bez logowania, bez sekretów, bez panelu | T1 |
 | `src/components/ToursSection.tsx` / `TourDetailModal.tsx` | katalog wycieczek (Golden Circle, jaskinie lodowe, zorza) | T1 |
 | `src/components/BookingModal.tsx` | formularz rezerwacji — zapisuje przez `addBooking()` do `localStorage` | T1 |
 | `src/components/DemoNotice.tsx` | baner informujący, że to demo | T1 |
@@ -34,14 +33,12 @@ masowych. Zero prawdziwych klientów/rezerwacji/płatności — jedyny wyjątek 
 flowchart LR
   U[Odwiedzajacy] --> Index --> Tours[ToursSection] --> TDM[TourDetailModal]
   TDM --> BM[BookingModal] -- addBooking --> LS[(localStorage)]
-  A[Admin] -- adminLogin --> Panel[/admin/]
-  Panel -- getBookings/updateBookingStatus --> LS
 ```
 
 ## Gdzie jest…
 - katalog wycieczek i ceny: `src/i18n/translations.ts` (`tours.items`)
 - "rezerwacje": `src/lib/store.ts` (localStorage, klucz `nordan_bookings`)
-- logowanie admina: `src/lib/store.ts` — dane WPISANE W KOD (`ADMIN_EMAIL`/`ADMIN_PASS`), widoczne w bundle po stronie klienta; akceptowalne tylko bo to demo bez realnych danych
+- logowanie: **nie ma go w ogóle** — repo nie zawiera żadnej bramki auth ani danych logowania. Panel `/admin` z udawanym logowaniem został usunięty; `src/test/store.test.ts` pilnuje, żeby nie wrócił
 - sekrety: brak realnych — patrz zastrzeżenie wyżej
 
 ## Decyzje nieodwracalne
@@ -49,4 +46,4 @@ flowchart LR
 
 ## Jak to cofnąć / kill switch
 Strona statyczna bez realnego backendu — rollback = Lovable "Revert to this version" albo `git revert` + Publish.
-Reset danych demo: wyczyść `localStorage` przeglądarki (klucze `nordan_bookings`, `nordan_blocked`, `nordan_admin_auth`).
+Reset danych demo: wyczyść `localStorage` przeglądarki (klucze `nordan_bookings`, `nordan_blocked`).
