@@ -29,8 +29,11 @@ const BOOKINGS_KEY = "nordan_bookings";
 const BLOCKED_KEY = "nordan_blocked";
 const ADMIN_KEY = "nordan_admin_auth";
 
-const ADMIN_EMAIL = "admin@nordan.is";
-const ADMIN_PASS = "nordan2024";
+// Demo-only credentials. This whole "backend" is localStorage in the browser bundle,
+// so anything here is public by construction — NEVER put a real credential in this file.
+// A real deployment must move this check to a server (Supabase Auth or equivalent).
+const DEMO_EMAIL = "demo@example.com";
+const DEMO_PASS = "demo-only-not-secure";
 
 function genId(): string {
   return Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
@@ -87,7 +90,7 @@ export function isDateBlocked(type: BookingType, itemIndex: number, date: string
 }
 
 export function adminLogin(email: string, password: string): boolean {
-  if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
+  if (email === DEMO_EMAIL && password === DEMO_PASS) {
     localStorage.setItem(ADMIN_KEY, "true");
     return true;
   }

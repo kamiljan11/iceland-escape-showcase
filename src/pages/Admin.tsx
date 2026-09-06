@@ -83,13 +83,17 @@ export default function Admin() {
         <Card className="w-full max-w-sm">
           <CardHeader className="text-center">
             <Shield className="w-10 h-10 text-primary mx-auto mb-2" />
-            <CardTitle className="font-heading">Admin Panel</CardTitle>
+            <CardTitle className="font-heading">Admin Panel — demo</CardTitle>
+            <p className="text-xs text-muted-foreground mt-2">
+              Showcase build: there is no backend. Bookings live only in this browser, and the
+              sign-in below is decorative — it protects nothing.
+            </p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
                 <Label>Email</Label>
-                <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="admin@nordan.is" />
+                <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="demo@example.com" />
               </div>
               <div>
                 <Label>Password</Label>
@@ -97,7 +101,9 @@ export default function Admin() {
               </div>
               {loginError && <p className="text-sm text-destructive">Invalid credentials</p>}
               <Button type="submit" className="w-full">Log in</Button>
-              <p className="text-xs text-muted-foreground text-center mt-2">Demo: admin@nordan.is / nordan2024</p>
+              <p className="text-xs text-muted-foreground text-center mt-2">
+                Demo login: demo@example.com / demo-only-not-secure
+              </p>
             </form>
           </CardContent>
         </Card>
